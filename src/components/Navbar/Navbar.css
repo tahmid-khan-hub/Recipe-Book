@@ -1,0 +1,24 @@
+body.light {
+  background-color: white;
+  color: rgb(0, 0, 0);
+}
+
+body.dark {
+  background-color: #080b1d;
+  color: white;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin: 20px;
+}
+
+a.active{
+    background-color: green;
+    color: white;
+    padding: 4px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 3px forestgreen;
+}

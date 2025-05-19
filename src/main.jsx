@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import AllRecipe from './pages/AllRecipe/AllRecipe.jsx'
+import AddRecipe from './pages/AddRecipe/AddRecipe.jsx'
+import MyRecipe from './pages/MyRecipe/MyRecipe.jsx'
 
 import {
   createBrowserRouter,
@@ -18,7 +21,20 @@ const router = createBrowserRouter([
       {
         path: "",
         element: <Home></Home>,
-      }
+      },
+      {
+        path: "allrecipe",
+        element: <AllRecipe></AllRecipe>
+      },
+      {
+        path: "addrecipe",
+        element: <AddRecipe></AddRecipe>
+      },
+      {
+        path: "myrecipe",
+        element: <MyRecipe></MyRecipe>
+      },
+      
     ]
   },
 ]);
