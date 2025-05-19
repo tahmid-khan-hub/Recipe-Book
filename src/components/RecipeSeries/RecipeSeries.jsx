@@ -29,9 +29,9 @@ const RecipeSeries = () => {
   ];
 
   return (
-    <section className="py-10 px-4 bg-orange-50 ">
-      <h2 className="text-2xl text-center font-bold mb-4 mt-2">Recipe Series & Mini Courses</h2>
-      <p className="text-center mb-7">Explore a variety of cooking journeys—from quick mini courses to deep-dive recipe series that bring global flavors to your kitchen.</p>
+    <section className="py-10 px-4  my-24">
+      <h2 className="text-2xl text-center text-orange-800 font-bold mb-4 mt-2">Recipe Series & Mini Courses</h2>
+      <p className="text-center text-orange-800 mb-7">Explore a variety of cooking journeys—from quick mini courses to deep-dive recipe series that bring global flavors to your kitchen.</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recipeSeries.map((series) => (
           <div
