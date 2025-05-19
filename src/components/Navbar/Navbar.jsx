@@ -50,7 +50,7 @@ const Navbar = () => {
 
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">RecipeBook</a>
+        <a className="text-xl font-semibold">RecipeBook</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -62,7 +62,7 @@ const Navbar = () => {
           {darkMode ? <FiSun size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
         </a>
         <a className="btn mr-2">Login</a>
-        <a className="btn mr-2">Register</a>
+        <a className="btn mr-2 hidden md:block pt-2">Register</a>
       </div>
     </div>
   );
