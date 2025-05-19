@@ -6,11 +6,11 @@ const Footer = () => {
     <footer className="bg-green-800 text-white py-8 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Website Name */}
-        <div className="text-xl font-semibold">YourWebsiteName</div>
+        <div className="text-xl font-semibold">RecipeBook</div>
 
         {/* Contact Info */}
         <div className="text-center md:text-left text-sm ">
-          <p className="-ml-2 md:-ml-6">Contact: contact@yourwebsite.com</p>
+          <p className="-ml-2 md:-ml-5">Contact: RecipeBook@gmail.com</p>
           <p>Phone: +1 (123) 456-7890</p>
         </div>
 
