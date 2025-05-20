@@ -1,10 +1,13 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
 
-  const {signIn} = use(AuthContext);
+  const {signIn, googleSignIn} = use(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleUser = e =>{
     e.preventDefault();
@@ -18,6 +21,18 @@ const Login = () => {
     signIn(email, password)
       .then(res =>{
         console.log(res);
+        navigate(`${location.state? location.state : "/"}`)
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+  }
+
+  const handleGoogleSignIn = () =>{
+    googleSignIn()
+      .then(res =>{
+        console.log(res.user);
+        navigate(`${location.state? location.state : "/"}`)
       })
       .catch(err =>{
         console.log(err);
@@ -37,7 +52,7 @@ const Login = () => {
             <a className="link link-hover text-gray-600">Forgot password?</a>
           </div>
           <button className="btn btn-neutral my-4">Login</button>
-          <button className="btn bg-white border-2 border-gray-400 text-black">
+          <button onClick={handleGoogleSignIn} className="btn bg-white border-2 border-gray-400 text-black">
             <svg
               aria-label="Google logo"
               width="16"

@@ -1,10 +1,13 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
 
-  const {newUser} = use(AuthContext);
+  const {newUser, googleSignIn} = use(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const handleNewUser = e =>{
     e.preventDefault();
@@ -20,11 +23,23 @@ const Register = () => {
     newUser(email, password)
       .then(res =>{
         console.log(res.user);
+        navigate("/");
       })
       .catch(err =>{
         console.log(err);
       })
 
+  }
+
+  const handleGoogleSignIn = () =>{
+    googleSignIn()
+      .then(res =>{
+        console.log(res.user);
+        navigate(`${location.state? location.state : "/"}`)
+      })
+      .catch(err =>{
+        console.log(err);
+      })
   }
 
   return (
@@ -44,7 +59,7 @@ const Register = () => {
           <input type="password" className="input text-gray-500" name="password" placeholder="Password" required/>
        
           <button className="btn btn-neutral my-4 mt-7">Register</button>
-          <button className="btn bg-white border-2 border-gray-400 text-black">
+          <button onClick={handleGoogleSignIn} className="btn bg-white border-2 border-gray-400 text-black">
             <svg
               aria-label="Google logo"
               width="16"
