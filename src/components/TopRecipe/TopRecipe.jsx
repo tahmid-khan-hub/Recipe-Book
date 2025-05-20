@@ -42,20 +42,22 @@ const TopRecipe = ({ recipeData }) => {
                   Likes: {recipe.likeCount}
                 </p>
                 <div className="relative h-full mt-[80px]">
-                  <button className="absolute bottom-4 right-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                  <Link to={`/recipeDetails/${recipe._id}`}><button className="absolute bottom-4 right-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
                     View Details
-                  </button>
+                  </button></Link>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <Link to="/allrecipe">
+      
         <div className="w-[110px] mt-3 mx-auto">
+          <Link to="/allrecipe">
           <button className="btn bg-orange-500 text-white rounded-xl hover:bg-orange-600">All Recipes</button>
+          </Link>
         </div>
-      </Link>
+      
     </div>
   );
 };

@@ -14,6 +14,7 @@ import HomeLayout from './layout/HomeLayout.jsx';
 import Home from './components/Home/Home.jsx';
 import Login from './pages/Login/Login.jsx'
 import Register from './pages/Register/Register.jsx'
+import RecipeDetails from './pages/RecipeDetails/RecipeDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <Register></Register>
+      },
+      {
+        path: "recipeDetails/:id",
+        loader: () => fetch('http://localhost:3000/recipes'),
+        element: <RecipeDetails></RecipeDetails>
       }
     ]
   },
