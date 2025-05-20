@@ -12,7 +12,8 @@ import {
 } from "react-router";
 import HomeLayout from './layout/HomeLayout.jsx';
 import Home from './components/Home/Home.jsx';
-import TopRecipe from './components/TopRecipe/TopRecipe.jsx'
+import Login from './pages/Login/Login.jsx'
+import Register from './pages/Register/Register.jsx'
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,14 @@ const router = createBrowserRouter([
         path: "myrecipe",
         element: <MyRecipe></MyRecipe>
       },
-      
+      {
+        path: "login",
+        element: <Login></Login>
+      },
+      {
+        path: "register",
+        element: <Register></Register>
+      }
     ]
   },
 ]);

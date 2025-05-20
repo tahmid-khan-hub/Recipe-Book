@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import './Navbar.css'
 
 const Navbar = () => {
@@ -61,7 +61,7 @@ const Navbar = () => {
         <a onClick={() => setDarkMode(!darkMode)} className="theme-toggle">
           {darkMode ? <FiSun size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
         </a>
-        <a className="btn mr-2">Login</a>
+        <Link to="login"><a className="btn mr-2">Login</a></Link>
         <a className="btn mr-2 hidden md:block pt-2">Register</a>
       </div>
     </div>
