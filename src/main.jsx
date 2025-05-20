@@ -12,6 +12,7 @@ import {
 } from "react-router";
 import HomeLayout from './layout/HomeLayout.jsx';
 import Home from './components/Home/Home.jsx';
+import TopRecipe from './components/TopRecipe/TopRecipe.jsx'
 
 const router = createBrowserRouter([
   {
@@ -20,10 +21,12 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <Home></Home>,
       },
       {
         path: "allrecipe",
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <AllRecipe></AllRecipe>
       },
       {
