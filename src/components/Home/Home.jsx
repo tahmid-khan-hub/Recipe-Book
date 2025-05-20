@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '../Banner/Banner';
 import TopRecipe from '../TopRecipe/TopRecipe';
 import RecipeSeries from '../RecipeSeries/RecipeSeries';
 import IngredientOfWeek from '../IngredientOfWeek/IngredientOfWeek';
 import { useLoaderData } from 'react-router';
 
+
+
 const Home = () => {
     const recipeData = useLoaderData();
+
+    useEffect(()=>{
+        window.scrollTo(0,0);
+    },[])
     return (
         <div>
             <Banner></Banner>

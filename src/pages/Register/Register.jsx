@@ -20,6 +20,15 @@ const Register = () => {
 
     console.log(name, photo, email, password);
 
+    if(password.length < 6){
+      alert('must be 6 char');
+      return;
+    }
+    else if(!/[a-z]/.test(password) || !/[A-Z]/.test(password)){
+      alert('must be upper and lower');
+      return;
+    }
+
     newUser(email, password)
       .then(res =>{
         console.log(res.user);
