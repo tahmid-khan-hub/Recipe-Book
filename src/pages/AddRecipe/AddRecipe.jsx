@@ -27,10 +27,10 @@ const AddRecipe = () => {
 
   return (
     <div className="card bg-base-100 w-11/12 max-w-sm mx-auto shrink-0 shadow-2xl mt-16 mb-24">
-      <div className="card-body">
+      <div className="card-body text-green-900">
         <h1 className="text-3xl font-bold text-center">Add Recipe</h1>
         <form onSubmit={handleNewRecipe} className="fieldset">
-          <label className="label mt-4">PhotoURL:</label>
+          <label className="label mt-4 font-bold">PhotoURL:</label>
           <input
             className="input"
             type="text"
@@ -38,7 +38,7 @@ const AddRecipe = () => {
             placeholder="Enter PhotoURL"
           />
 
-          <label className="label mt-4">Title:</label>
+          <label className="label mt-4 font-bold">Title:</label>
           <input
             className="input"
             type="text"
@@ -46,13 +46,13 @@ const AddRecipe = () => {
             placeholder="Enter Title"
           />
 
-          <label className="label mt-4">Ingredients:</label>
+          <label className="label mt-4 font-bold">Ingredients:</label>
           <textarea className="textarea" name="ingredients" />
 
-          <label className="label mt-4">Instructions:</label>
+          <label className="label mt-4 font-bold">Instructions:</label>
           <textarea className="textarea" name="instructions" />
 
-          <label className="label mt-4">Cuisine Type:</label>
+          <label className="label mt-4 font-bold">Cuisine Type:</label>
           <select className="select " name="cuisineType" >
             <option value="Italian">Italian</option>
             <option value="Mexican">Mexican</option>
@@ -61,10 +61,10 @@ const AddRecipe = () => {
             <option value="Others">Others</option>
           </select>
 
-          <label className="label mt-4">Preparation Time (minutes):</label>
+          <label className="label mt-4 font-bold">Preparation Time (minutes):</label>
           <input className="input" type="number" name="prepTime" min="0" />
 
-          <label className="label mt-4">Categories:</label>
+          <label className="label mt-4 font-bold">Categories:</label>
           <label className="label">
             <input type="checkbox" name="categories" value="Breakfast" />{" "}
             Breakfast
@@ -82,7 +82,7 @@ const AddRecipe = () => {
             <input type="checkbox" name="categories" value="Vegan" /> Vegan
           </label>
 
-          <label className="label mt-5">Like Count:</label>
+          <label className="label mt-5 font-bold">Like Count:</label>
           <input className="input" type="number" value="0" readOnly />
 
           <button className="btn mt-8" type="submit">
