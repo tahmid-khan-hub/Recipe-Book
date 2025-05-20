@@ -48,7 +48,7 @@ const RecipeSeries = () => {
             <p className="mt-3 text-xs text-gray-500">
               Duration: {series.days} Days
             </p>
-            <button className="mt-4 px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600">
+            <button className="mt-7 px-4 py-2 text-white bg-gradient-to-r from-orange-500 to-orange-600 bg-orange-500 rounded-xl hover:bg-orange-600 hover:from-orange-600 hover:to-orange-700 border-orange-800 shadow-md shadow-orange-300">
               View Series
             </button>
           </div>

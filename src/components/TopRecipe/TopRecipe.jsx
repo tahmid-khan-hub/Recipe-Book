@@ -42,7 +42,7 @@ const TopRecipe = ({ recipeData }) => {
                   Likes: {recipe.likeCount}
                 </p>
                 <div className="relative h-full mt-[80px]">
-                  <Link to={`/recipeDetails/${recipe._id}`}><button className="absolute bottom-4 right-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">
+                  <Link to={`/recipeDetails/${recipe._id}`}><button className="absolute bottom-4 right-4 px-4 py-2 rounded-md text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 ">
                     View Details
                   </button></Link>
                 </div>
@@ -54,7 +54,7 @@ const TopRecipe = ({ recipeData }) => {
       
         <div className="w-[110px] mt-3 mx-auto">
           <Link to="/allrecipe">
-          <button className="btn bg-orange-500 text-white rounded-xl hover:bg-orange-600">All Recipes</button>
+          <button className="btn text-white bg-gradient-to-r from-orange-500 to-orange-600 bg-orange-500 rounded-xl hover:bg-orange-600 hover:from-orange-600 hover:to-orange-700 border-orange-800 shadow-md shadow-orange-300">All Recipes</button>
           </Link>
         </div>
       

@@ -3,6 +3,8 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import { Link, NavLink } from "react-router";
 import "./Navbar.css";
 import { AuthContext } from "../../context/AuthContext";
+import { Tooltip } from "react-tooltip";
+import "react-tooltip/dist/react-tooltip.css";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -12,15 +14,15 @@ const Navbar = () => {
     document.body.className = darkMode ? "dark" : "light";
   }, [darkMode]);
 
-  const handleLogout = () =>{
+  const handleLogout = () => {
     logOut()
-      .then(res =>{
+      .then((res) => {
         console.log(res.user);
       })
-      .catch(err =>{
+      .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   const links = (
     <>
@@ -43,7 +45,7 @@ const Navbar = () => {
     <div className="navbar border-b-1 border-b-green-400">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+          <div tabIndex={0} role="button" className=" lg:hidden mr-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -78,7 +80,7 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </div>
-        <a className="text-xl font-semibold">RecipeBook</a>
+        <a className="text-xl font-semibold "><span className="text-3xl text-orange-600 font-bold">R</span>ecipeB<span className="text-green-700 font-bold">oo</span>k</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
@@ -88,6 +90,7 @@ const Navbar = () => {
           {darkMode ? <FiSun size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
         </a>
         <img
+          id="user-avatar" 
           className="w-9 h-9 mr-3 ml-2 object-cover rounded-full ring-2 ring-green-500 ring-offset-2 ring-offset-white"
           src={user?.photoURL?.trim() || "https://i.ibb.co/B5N1Fzbn/image.png"}
           alt="User Avatar"
@@ -95,6 +98,13 @@ const Navbar = () => {
             e.target.onerror = null;
             e.target.src = "https://i.ibb.co/S4xbnSVD/image.png";
           }}
+        />
+
+        <Tooltip
+          anchorId="user-avatar"
+          content={user?.displayName || "User"}
+          place="top"
+          className="!bg-orange-500"
         />
         {user ? (
           <button

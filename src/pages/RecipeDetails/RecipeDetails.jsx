@@ -30,7 +30,7 @@ const RecipeDetails = () => {
 
         <div className="text-center mb-6">
           <button
-            className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-6 rounded-full shadow-md transition duration-300 flex items-center justify-center gap-2 mx-auto"
+            className=" text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 font-semibold py-2 px-6 rounded-full transition duration-300 flex items-center justify-center gap-2 mx-auto"
           >
             <FaThumbsUp /> Like
           </button>

@@ -16,6 +16,7 @@ import Login from './pages/Login/Login.jsx'
 import Register from './pages/Register/Register.jsx'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
+import PrivateRoute from './context/PrivateRoute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -34,11 +35,15 @@ const router = createBrowserRouter([
       },
       {
         path: "addrecipe",
-        element: <AddRecipe></AddRecipe>
+        element: <PrivateRoute>
+          <AddRecipe></AddRecipe>
+        </PrivateRoute>
       },
       {
         path: "myrecipe",
-        element: <MyRecipe></MyRecipe>
+        element: <PrivateRoute>
+          <MyRecipe></MyRecipe>
+        </PrivateRoute>
       },
       {
         path: "login",
@@ -51,7 +56,9 @@ const router = createBrowserRouter([
       {
         path: "recipeDetails/:id",
         loader: () => fetch('http://localhost:3000/recipes'),
-        element: <RecipeDetails></RecipeDetails>
+        element: <PrivateRoute>
+          <RecipeDetails></RecipeDetails>
+        </PrivateRoute>
       }
     ]
   },

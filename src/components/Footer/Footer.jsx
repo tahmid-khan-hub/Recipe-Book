@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-green-800 text-white py-8 px-4">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Website Name */}
-        <div className="text-xl font-semibold">RecipeBook</div>
+        <div className="text-xl font-semibold"><span className="text-3xl text-orange-600 font-bold">R</span>ecipeBook</div>
 
         {/* Contact Info */}
         <div className="text-center md:text-left text-sm ">
