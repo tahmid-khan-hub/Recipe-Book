@@ -21,7 +21,7 @@ const AllRecipe = () => {
               alt={recipe.title}
               className="rounded-xl h-40 w-full object-cover mb-4"
             />
-            <h2 className="text-lg font-semibold mb-2">{recipe.title}</h2>
+            <h2 className="text-lg font-semibold mb-2 text-orange-800">{recipe.title}</h2>
             <p className="text-sm text-gray-600 my-1">
               <strong>Cuisine:</strong> {recipe.cuisineType}
             </p>
