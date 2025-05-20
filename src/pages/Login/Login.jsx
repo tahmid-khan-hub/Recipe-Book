@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Login = () => {
   return (
@@ -7,9 +8,9 @@ const Login = () => {
         <h1 className="text-3xl text-center mb-3 font-bold text-green-700">Login Now</h1>
         <fieldset className="fieldset">
           <label className="label text-gray-400">Email</label>
-          <input type="email" className="input" placeholder="Email" />
+          <input type="email" className="input text-gray-400" placeholder="Enter your email" required/>
           <label className="label mt-2 text-gray-400">Password</label>
-          <input type="password" className="input" placeholder="Password" />
+          <input type="password" className="input text-gray-400" placeholder="Enter your password" required/>
           <div className="mt-3">
             <a className="link link-hover text-gray-600">Forgot password?</a>
           </div>
@@ -46,6 +47,7 @@ const Login = () => {
           </button>
         </fieldset>
       </div>
+      <p className="ml-7 mb-9 text-gray-600">New to this site? <Link className="text-green-700 font-bold" to="/register">Click here</Link></p>
     </div>
   );
 };

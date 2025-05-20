@@ -61,8 +61,8 @@ const Navbar = () => {
         <a onClick={() => setDarkMode(!darkMode)} className="theme-toggle">
           {darkMode ? <FiSun size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
         </a>
-        <Link to="login"><a className="btn mr-2">Login</a></Link>
-        <a className="btn mr-2 hidden md:block pt-2">Register</a>
+        <Link to="login"><a className="btn mr-2 text-white bg-green-600 hover:bg-green-800">Login</a></Link>
+        <Link to="register"><a className="btn mr-2 text-white bg-green-600 hover:bg-green-800 hidden md:block pt-2">Register</a></Link>
       </div>
     </div>
   );
