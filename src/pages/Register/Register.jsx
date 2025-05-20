@@ -1,22 +1,47 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
+
+  const {newUser} = use(AuthContext);
+
+  const handleNewUser = e =>{
+    e.preventDefault();
+
+    const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(name, photo, email, password);
+
+    newUser(email, password)
+      .then(res =>{
+        console.log(res.user);
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+
+  }
+
   return (
     <div className="card bg-base-100 w-11/12 max-w-sm mx-auto my-24 shrink-0 shadow-2xl">
       <div className="card-body">
         <h1 className="text-3xl text-center mb-3 font-bold text-green-700">
           Register
         </h1>
-        <fieldset className="fieldset">
+        <form onSubmit={handleNewUser} className="fieldset">
           <label className="label mt-2 text-gray-400">Name</label>
-          <input type="text" className="input text-gray-500" placeholder="Enter your name" />
+          <input type="text" className="input text-gray-500" name="name" placeholder="Enter your name" required/>
           <label className="label mt-2 text-gray-400">Email</label>
-          <input type="email" className="input text-gray-500" placeholder="Email" />
+          <input type="email" className="input text-gray-500" name="email" placeholder="Email" required/>
           <label className="label mt-2 text-gray-400">PhotoURL</label>
-          <input type="text" className="input text-gray-500" placeholder="Enter your PhotoURL" />
+          <input type="text" className="input text-gray-500" name="photo" placeholder="Enter your PhotoURL" required/>
           <label className="label mt-2 text-gray-400">Password</label>
-          <input type="password" className="input text-gray-500" placeholder="Password" />
+          <input type="password" className="input text-gray-500" name="password" placeholder="Password" required/>
        
           <button className="btn btn-neutral my-4 mt-7">Register</button>
           <button className="btn bg-white border-2 border-gray-400 text-black">
@@ -49,7 +74,7 @@ const Register = () => {
             </svg>
             Register with Google
           </button>
-        </fieldset>
+        </form>
       </div>
       <p className="text-gray-600 ml-7 mb-12">Already have an account? <Link className="text-green-700 font-bold" to="/login">Click here</Link></p>
     </div>
