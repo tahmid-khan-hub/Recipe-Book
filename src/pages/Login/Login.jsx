@@ -1,16 +1,38 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
+
+  const {signIn} = use(AuthContext);
+
+  const handleUser = e =>{
+    e.preventDefault();
+
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    console.log(password, email);
+
+    signIn(email, password)
+      .then(res =>{
+        console.log(res);
+      })
+      .catch(err =>{
+        console.log(err);
+      })
+  }
+
   return (
     <div className="card bg-base-100 w-11/12 max-w-sm mx-auto my-24 shrink-0 shadow-2xl">
       <div className="card-body">
         <h1 className="text-3xl text-center mb-3 font-bold text-green-700">Login Now</h1>
-        <fieldset className="fieldset">
+        <form onSubmit={handleUser} className="fieldset">
           <label className="label text-gray-400">Email</label>
-          <input type="email" className="input text-gray-400" placeholder="Enter your email" required/>
+          <input type="email" name="email" className="input text-gray-400" placeholder="Enter your email" required/>
           <label className="label mt-2 text-gray-400">Password</label>
-          <input type="password" className="input text-gray-400" placeholder="Enter your password" required/>
+          <input type="password" name="password" className="input text-gray-400" placeholder="Enter your password" required/>
           <div className="mt-3">
             <a className="link link-hover text-gray-600">Forgot password?</a>
           </div>
@@ -45,7 +67,7 @@ const Login = () => {
             </svg>
             Login with Google
           </button>
-        </fieldset>
+        </form>
       </div>
       <p className="ml-7 mb-9 text-gray-600">New to this site? <Link className="text-green-700 font-bold" to="/register">Click here</Link></p>
     </div>
