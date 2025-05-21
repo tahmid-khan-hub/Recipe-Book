@@ -1,6 +1,7 @@
 import React, { use } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
 
@@ -30,13 +31,20 @@ const Register = () => {
     }
 
     newUser(email, password)
-      .then(res =>{
-        console.log(res.user);
+    .then(res => {
+      const createdUser = res.user;
+      updateProfile(createdUser, {
+        displayName: name,
+        photoURL: photo
+      }).then(() => {
         navigate("/");
-      })
-      .catch(err =>{
+      }).catch(err => {
         console.log(err);
-      })
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
 
   }
 

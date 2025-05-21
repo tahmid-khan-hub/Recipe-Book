@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 
 const AllRecipe = () => {
   const allRecipeData = useLoaderData();
@@ -34,9 +34,10 @@ const AllRecipe = () => {
             <p className="text-sm text-gray-600 mb-2 line-clamp-2 mt-1">
               <strong>Ingredients:</strong> {recipe.ingredients}
             </p>
-            <button className="mt-6 px-4 py-2 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition">
+            <Link to={`/recipeDetails/${recipe._id}`}>
+             <button className="mt-6 px-4 py-2 text-white rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition border-1 border-orange-800 shadow-md shadow-orange-300">
               See Details
-            </button>
+            </button></Link>
           </div>
         ))}
       </div>

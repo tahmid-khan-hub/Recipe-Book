@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router";
 
@@ -8,6 +8,10 @@ const RecipeDetails = () => {
 
   const recipe = data.find((r) => r._id.toString() == id.id);
   console.log(recipe);
+
+  useEffect(() =>{
+    window.scrollTo(0,0);
+  },[])
 
   return (
     <div>
@@ -23,10 +27,6 @@ const RecipeDetails = () => {
           alt={recipe.title}
           className="w-full h-64 object-cover rounded-lg mb-4"
         />
-
-        {/* <p className="text-center text-lg font-medium mb-4 text-indigo-600">
-          {recipe.likeCount} people interested in this recipe
-        </p> */}
 
         <div className="text-center mb-6">
           <button
