@@ -22,7 +22,7 @@ const AllRecipe = () => {
         {allRecipeData.map((recipe) => (
           <div data-aos="flip-right"
             key={recipe._id}
-            className="bg-white shadow-lg rounded-2xl overflow-hidden p-4 flex flex-col"
+            className="bg-white rounded-2xl overflow-hidden p-4 flex flex-col border-1 border-green-600 shadow-md hover:shadow-md hover:shadow-green-600"
           >
             <img
               src={recipe.photoURL}

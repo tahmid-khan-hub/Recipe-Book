@@ -1,8 +1,17 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Login = () => {
+
+  useEffect(() => {
+    AOS.init({
+        duration: 1000,
+        once: false,
+    });
+   }, []);
 
   const {signIn, googleSignIn} = use(AuthContext);
 
@@ -40,19 +49,19 @@ const Login = () => {
   }
 
   return (
-    <div className="card bg-base-100 w-11/12 max-w-sm mx-auto my-24 shrink-0 shadow-2xl">
-      <div className="card-body">
+    <div data-aos="fade-up" className="card bg-base-100 w-11/12 max-w-sm mx-auto my-24 shrink-0 shadow-2xl border-1 border-green-600 hover:shadow-xl hover:shadow-green-600">
+      <div className="card-body ">
         <h1 className="text-3xl text-center mb-3 font-bold text-green-700">Login Now</h1>
         <form onSubmit={handleUser} className="fieldset">
-          <label className="label text-gray-400">Email</label>
-          <input type="email" name="email" className="input text-gray-400" placeholder="Enter your email" required/>
-          <label className="label mt-2 text-gray-400">Password</label>
-          <input type="password" name="password" className="input text-gray-400" placeholder="Enter your password" required/>
+          <label className="label text-green-700">Email</label>
+          <input type="email" name="email" className="input text-green-700" placeholder="Enter your email" required/>
+          <label className="label mt-2 text-green-700">Password</label>
+          <input type="password" name="password" className="input text-green-700" placeholder="Enter your password" required/>
           <div className="mt-3">
             <a className="link link-hover text-gray-600">Forgot password?</a>
           </div>
-          <button className="btn btn-neutral my-4">Login</button>
-          <button onClick={handleGoogleSignIn} className="btn bg-white border-2 border-gray-400 text-black">
+          <button className="btn btn-neutral my-4 text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">Login</button>
+          <button onClick={handleGoogleSignIn} className="btn text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">
             <svg
               aria-label="Google logo"
               width="16"

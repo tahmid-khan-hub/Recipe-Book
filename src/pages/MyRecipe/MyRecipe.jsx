@@ -109,7 +109,7 @@ const MyRecipe = () => {
               <div
                 data-aos="fade-up"
                 key={recipe._id}
-                className="flex flex-col md:flex-row bg-white shadow-xl rounded-xl overflow-hidden"
+                className="flex flex-col md:flex-row bg-white shadow-md rounded-xl overflow-hidden hover:shadow-md hover:shadow-green-600 border-1 border-green-600"
               >
                 <img
                   src={recipe.photoURL}
@@ -175,11 +175,11 @@ const MyRecipe = () => {
 
       {selectedRecipe && (
         <dialog id="my_modal_3" className="modal py-5" open>
-          <div className="modal-box max-h-[90vh] overflow-y-auto">
+          <div className="modal-box max-h-[90vh] overflow-y-auto border-1 border-orange-600">
             <h2 className="text-center font-semibold text-2xl mb-5 text-orange-800">
               Update Recipe
             </h2>
-            <form onSubmit={handleRecipeUpdated} method="dialog">
+            <form className="text-orange-800" onSubmit={handleRecipeUpdated} method="dialog">
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-orange-800"
                 onClick={() => setSelectedRecipe(null)}
@@ -282,7 +282,7 @@ const MyRecipe = () => {
                   )}
                 </div>
               </div>
-              <button className="btn mt-9 mb-4 w-full">Update Recipe</button>
+              <button className="btn mt-9 mb-4 w-full text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 border-orange-800 shadow-md shadow-orange-300">Update Recipe</button>
             </form>
           </div>
         </dialog>
