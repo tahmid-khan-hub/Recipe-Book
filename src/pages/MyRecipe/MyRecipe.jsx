@@ -49,12 +49,25 @@ const MyRecipe = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log("after update", data);
+
+        setMyRecipe((prevRecipes) =>
+          prevRecipes.map((recipe) =>
+            recipe._id === selectedRecipe._id
+              ? { ...recipe, ...newRecipe }
+              : recipe
+          )
+        );
+
         setSelectedRecipe(null);
+        Swal.fire({
+          title: "Recipe updated successfully ",
+          icon: "success",
+          draggable: true,
+        });
       });
   };
 
   const handleDeleteRecipe = (id) => {
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -65,29 +78,20 @@ const MyRecipe = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-
         fetch(`http://localhost:3000/recipes/${id}`, {
-          method: 'DELETE',
-          
+          method: "DELETE",
         })
-          .then(res => res.json())
-          .then(data =>{
-            console.log('deleted', data);
+          .then((res) => res.json())
+          .then((data) => {
+            console.log("deleted", data);
             setMyRecipe((prev) => prev.filter((recipe) => recipe._id !== id));
 
             Swal.fire({
               title: "Deleted!",
-              text: "Your file has been deleted.",
+              text: "Your recipe has been deleted.",
               icon: "success",
             });
-          })
-
-
-        // Swal.fire({
-        //   title: "Deleted!",
-        //   text: "Your file has been deleted.",
-        //   icon: "success",
-        // });
+          });
       }
     });
   };
