@@ -51,7 +51,7 @@ const RecipeSeries = () => {
         {recipeSeries.map((series) => (
           <div
             key={series.id}
-            className="bg-white rounded-2xl shadow p-4 hover:shadow-md transition"
+            className="bg-white rounded-2xl p-4 border-1 border-green-600 shadow-sm hover:shadow-md shadow-green-600 transition"
           >
             <img
               src={series.thumbnail}

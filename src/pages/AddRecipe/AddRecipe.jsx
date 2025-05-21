@@ -43,7 +43,7 @@ const AddRecipe = () => {
     }
 
   return (
-    <div data-aos="fade-up" className="card bg-base-100 w-11/12 max-w-2xl mx-auto shrink-0 shadow-2xl mt-16 mb-24">
+    <div data-aos="fade-up" className="card bg-base-100 w-11/12 max-w-2xl mx-auto shrink-0 shadow-2xl shadow-green-500 mt-16 mb-24 border-1 border-green-600">
     <div className="card-body text-green-900">
         <h1 className="text-3xl font-bold text-center">Add Recipe</h1>
         <p className="text-center mt-3 mb-6">Share your culinary creations with our community! Fill out the form below to submit your delicious recipe.</p>

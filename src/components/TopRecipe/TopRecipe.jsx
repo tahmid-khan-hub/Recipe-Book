@@ -37,7 +37,7 @@ const TopRecipe = ({ recipeData }) => {
             <div
               data-aos="flip-down"
               key={recipe._id}
-              className="bg-white shadow-md rounded-lg overflow-hidden"
+              className="bg-white shadow-md hover:shadow-md hover:shadow-green-600 rounded-lg overflow-hidden border-1 border-green-600"
             >
               <img
                 src={recipe.photoURL}

@@ -57,7 +57,7 @@ const IngredientOfWeek = () => {
           <div
             data-aos="zoom-in"
             key={recipe.id}
-            className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition"
+            className="bg-white rounded-xl shadow-md p-4 hover:shadow-md hover:shadow-green-600 transition border-1 border-green-600"
           >
             <h3 className="text-lg font-semibold mb-2 text-gray-500">{recipe.title}</h3>
             <img
