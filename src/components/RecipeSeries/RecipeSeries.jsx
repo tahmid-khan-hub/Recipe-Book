@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Fade } from "react-awesome-reveal";
 
 const RecipeSeries = () => {
+
+  useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: false,
+      });
+    }, []);
+
   const recipeSeries = [
     {
       id: 1,
@@ -30,9 +41,13 @@ const RecipeSeries = () => {
 
   return (
     <section className="py-10 px-4  my-24">
-      <h2 className="text-2xl text-center text-orange-800 font-bold mb-4 mt-2">Recipe Series & Mini Courses</h2>
-      <p className="text-center text-orange-800 mb-7">Explore a variety of cooking journeys—from quick mini courses to deep-dive recipe series that bring global flavors to your kitchen.</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <Fade>
+        <h2 className="text-2xl text-center text-orange-800 font-bold mb-4 mt-2">Recipe Series & Mini Courses</h2>
+        <p className="text-center text-orange-800 mb-7">Explore a variety of cooking journeys—from quick mini courses to deep-dive recipe series that bring global flavors to your kitchen.</p>
+      </Fade>
+      <div data-aos="fade-down"
+        data-aos-easing="linear"
+        data-aos-duration="1500" className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {recipeSeries.map((series) => (
           <div
             key={series.id}

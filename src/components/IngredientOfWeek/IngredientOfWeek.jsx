@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { Fade } from "react-awesome-reveal";
 
 const IngredientOfWeek = () => {
+
+  useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        once: false,
+    });
+  }, []);
+
   const ingredient = {
     name: "Soy Sauce",
     image: "https://i.ibb.co/HLzjCF5d/image.png",
@@ -26,10 +37,12 @@ const IngredientOfWeek = () => {
   };
   return (
     <section className="py-10 px-4 mt-24 ">
-      <h2 className="text-2xl font-bold mb-6 text-orange-800">
+      <Fade>
+        <h2 className="text-2xl font-bold mb-6 text-orange-800">
         Ingredient of the Week: {ingredient.name}
       </h2>
-      <div className="flex flex-col md:flex-row items-center gap-6 mb-8">
+      </Fade>
+      <div data-aos="zoom-out" className="flex flex-col md:flex-row items-center gap-6 mb-8">
         <img
           src={ingredient.image}
           alt={ingredient.name}
@@ -42,6 +55,7 @@ const IngredientOfWeek = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {ingredient.recipes.map((recipe) => (
           <div
+            data-aos="zoom-in"
             key={recipe.id}
             className="bg-white rounded-xl shadow-md p-4 hover:shadow-lg transition"
           >

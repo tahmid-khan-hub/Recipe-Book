@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "react-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Fade } from "react-awesome-reveal";
 
 const TopRecipe = ({ recipeData }) => {
   console.log(recipeData);
@@ -20,15 +21,17 @@ const TopRecipe = ({ recipeData }) => {
   return (
     <div>
       <div className="p-4 mt-24">
-        <h2 className="text-2xl text-center text-orange-800 font-semibold mb-4">
+        <Fade>
+          <h2 className="text-2xl text-center text-orange-800 font-semibold mb-4">
           Top Recipes
-        </h2>
-        <p className="text-center text-gray-500 mb-6">
-          Discover our most popular and mouthwatering recipes! From quick
-          weeknight dinners to impressive weekend feasts, these top-rated dishes
-          are guaranteed to become your new favorites. Browse through our
-          collection and find inspiration for your next culinary adventure.
-        </p>
+          </h2>
+          <p className="text-center text-gray-500 mb-6">
+            Discover our most popular and mouthwatering recipes! From quick
+            weeknight dinners to impressive weekend feasts, these top-rated dishes
+            are guaranteed to become your new favorites. Browse through our
+            collection and find inspiration for your next culinary adventure.
+          </p>
+        </Fade>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {topRecipes.map((recipe) => (
             <div
