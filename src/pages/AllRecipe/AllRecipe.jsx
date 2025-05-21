@@ -16,6 +16,8 @@ const AllRecipe = () => {
 
   return (
     <div  className="p-6">
+      <h1 className="text-3xl text-orange-800 font-semibold text-center mt-8 mb-3">Explore Our Delicious Recipes</h1>
+      <p className="text-gray-500 text-center mb-11">Welcome to our recipe collection! Here you'll find a diverse range of culinary   creations, from quick and easy meals to more elaborate dishes perfect for any occasion. Browse through our categories to discover new favorites and expand your cooking repertoire. We're constantly adding new recipes, so be sure to check back often for fresh inspiration!</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {allRecipeData.map((recipe) => (
           <div data-aos="flip-right"

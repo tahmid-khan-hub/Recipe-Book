@@ -29,12 +29,12 @@ const MyRecipe = () => {
   return (
     <div>
       <div data-aos="fade-up" className="my-10 px-4 md:px-10 ">
-        <h2 className="text-3xl font-bold mb-6 text-orange-800 text-center">
+        <h2 className="text-3xl font-bold mb-12 text-orange-800 text-center">
           My Recipes
         </h2>
 
         {myRecipe.length > 0 ? (
-          <div className="space-y-6 max-w-5xl mx-auto">
+          <div className="space-y-16 max-w-5xl mx-auto">
             {myRecipe.map((recipe) => (
               <div
                 key={recipe._id}
