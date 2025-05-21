@@ -1,12 +1,22 @@
 import React, { use, useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import { Fade } from "react-awesome-reveal";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const MyRecipe = () => {
   const { user } = use(AuthContext);
   const [myRecipe, setMyRecipe] = useState([]);
 
   const Allrecipe = useLoaderData();
+
+  useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        once: false,
+      });
+    }, []);
 
   useEffect(() => {
     if (user?.email && Allrecipe?.length > 0) {
@@ -18,7 +28,7 @@ const MyRecipe = () => {
   }, [user, Allrecipe]);
   return (
     <div>
-      <div className="my-10 px-4 md:px-10 ">
+      <div data-aos="fade-up" className="my-10 px-4 md:px-10 ">
         <h2 className="text-3xl font-bold mb-6 text-orange-800 text-center">
           My Recipes
         </h2>
@@ -40,9 +50,11 @@ const MyRecipe = () => {
                 {/* Right: Content */}
                 <div className="p-4 flex flex-col justify-between flex-1">
                   <div>
-                    <h3 className="text-2xl font-bold text-green-800 mb-7">
-                      {recipe.title}
+                    <Fade>
+                        <h3 className="text-2xl font-bold text-green-800 mb-7">
+                        {recipe.title}
                     </h3>
+                    </Fade>
                     <p className="text-sm text-gray-600">
                       <strong>Cuisine:</strong> {recipe.cuisineType} |{" "}
                       <strong>Prep Time:</strong> {recipe.prepTime} min

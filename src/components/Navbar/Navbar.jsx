@@ -5,6 +5,7 @@ import "./Navbar.css";
 import { AuthContext } from "../../context/AuthContext";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
+import { Fade } from "react-awesome-reveal";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -80,7 +81,7 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </div>
-        <a className="text-xl font-semibold "><span className="text-3xl text-orange-600 font-bold">R</span>ecipeB<span className="text-green-700 font-bold">oo</span>k</a>
+        <Fade delay={1500}><a className="text-xl font-semibold "><span className="text-3xl text-orange-600 font-bold">R</span>ecipeB<span className="text-green-700 font-bold">oo</span>k</a></Fade>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>

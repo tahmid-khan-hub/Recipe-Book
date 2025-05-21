@@ -1,18 +1,24 @@
 import React, { useEffect } from "react";
 import { Link, useLoaderData } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AllRecipe = () => {
   const allRecipeData = useLoaderData();
 
   useEffect(() => {
     window.scrollTo(0,0);
+    AOS.init({
+        duration: 1000,
+        once: false,
+    });
   }, [])
 
   return (
-    <div className="p-6">
+    <div  className="p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {allRecipeData.map((recipe) => (
-          <div
+          <div data-aos="flip-right"
             key={recipe._id}
             className="bg-white shadow-lg rounded-2xl overflow-hidden p-4 flex flex-col"
           >

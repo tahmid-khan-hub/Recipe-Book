@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const TopRecipe = ({ recipeData }) => {
   console.log(recipeData);
+
+  useEffect(() => {
+      AOS.init({
+        duration: 1000,
+        once: false,
+      });
+    }, []);
 
   const topRecipes = [...recipeData]
     .sort((a, b) => b.likeCount - a.likeCount)
@@ -23,6 +32,7 @@ const TopRecipe = ({ recipeData }) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {topRecipes.map((recipe) => (
             <div
+              data-aos="flip-down"
               key={recipe._id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
             >

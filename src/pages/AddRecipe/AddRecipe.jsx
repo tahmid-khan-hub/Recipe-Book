@@ -1,12 +1,21 @@
-import React, { use } from "react";
+import React, { use, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const AddRecipe = () => {
 
     const {user} = use(AuthContext);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init({
+          duration: 1000,
+          once: false,
+      });
+    }, []);
 
     const handleNewRecipe = e =>{
         e.preventDefault();
@@ -34,7 +43,7 @@ const AddRecipe = () => {
     }
 
   return (
-    <div className="card bg-base-100 w-11/12 max-w-sm mx-auto shrink-0 shadow-2xl mt-16 mb-24">
+    <div data-aos="fade-up" className="card bg-base-100 w-11/12 max-w-sm mx-auto shrink-0 shadow-2xl mt-16 mb-24">
       <div className="card-body text-green-900">
         <h1 className="text-3xl font-bold text-center">Add Recipe</h1>
         <form onSubmit={handleNewRecipe} className="fieldset">
