@@ -1,6 +1,12 @@
-import React from "react";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../../context/AuthContext";
 
 const AddRecipe = () => {
+
+    const {user} = use(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleNewRecipe = e =>{
         e.preventDefault();
@@ -9,6 +15,7 @@ const AddRecipe = () => {
         const formData = new FormData(form);
         const newRecipe = Object.fromEntries(formData.entries());
         newRecipe.likeCount = 0;
+        newRecipe.userEmail = user?.email;
 
         console.log(newRecipe);
 
@@ -22,6 +29,7 @@ const AddRecipe = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('new recipe added', data);
+                navigate("/myrecipe")
             })
     }
 
@@ -85,7 +93,7 @@ const AddRecipe = () => {
           <label className="label mt-5 font-bold">Like Count:</label>
           <input className="input" type="number" value="0" readOnly />
 
-          <button className="btn mt-8" type="submit">
+          <button className="btn btn-wide ml-[5%] md:ml-[10%] mt-8" type="submit">
             Add Recipe
           </button>
         </form>

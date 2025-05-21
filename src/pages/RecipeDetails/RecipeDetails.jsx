@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router";
 
@@ -9,15 +9,35 @@ const RecipeDetails = () => {
   const recipe = data.find((r) => r._id.toString() == id.id);
   console.log(recipe);
 
+  // const [likeCount, setLikeCount] = useState(recipe?.likeCount || 0);
+
   useEffect(() =>{
     window.scrollTo(0,0);
   },[])
+
+  
+
+  // const handleLike = () =>{
+  //   setLikeCount(prev => prev + 1);
+
+  //   fetch(`http://localhost:3000/recipes/${id}/like`, {
+  //     method: 'PATCH',
+  //     headers:{
+  //       'content-type':'application/json'
+  //     },
+  //     body:JSON.stringify({ likeCount: likeCount + 1 })
+  //   })
+  //     .then(res => res.json())
+  //     .then(err =>{
+  //       console.log(err);
+  //     })
+  // }
 
   return (
     <div>
       <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden p-6 mt-16 mb-24">
         <p className="text-center text-lg font-medium mb-11 text-orange-700">
-          {recipe.likeCount} people interested in this recipe
+         people interested in this recipe
         </p>
 
         <h2 className="text-2xl font-bold mb-4 text-center text-green-600">{recipe.title}</h2>
@@ -30,6 +50,7 @@ const RecipeDetails = () => {
 
         <div className="text-center mb-6">
           <button
+          // onClick={handleLike}
             className=" text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 font-semibold py-2 px-6 rounded-full transition duration-300 flex items-center justify-center gap-2 mx-auto"
           >
             <FaThumbsUp /> Like
