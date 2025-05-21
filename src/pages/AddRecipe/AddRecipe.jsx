@@ -99,23 +99,23 @@ const AddRecipe = () => {
                 <label className="label block font-bold mb-2">Categories:</label>
                 <div className="flex flex-col md:flex-row flex-wrap gap-2 md:gap-3">
                     <label className="label cursor-pointer">
-                        <input type="checkbox" name="categories" value="Breakfast" className="checkbox" required/>
+                        <input type="checkbox" name="categories" value="Breakfast" className="checkbox" />
                         <span className="label-text ml-2">Breakfast</span>
                     </label>
                     <label className="label cursor-pointer">
-                        <input type="checkbox" name="categories" value="Lunch" className="checkbox" required/>
+                        <input type="checkbox" name="categories" value="Lunch" className="checkbox" />
                         <span className="label-text ml-2">Lunch</span>
                     </label>
                     <label className="label cursor-pointer">
-                        <input type="checkbox" name="categories" value="Dinner" className="checkbox" required/>
+                        <input type="checkbox" name="categories" value="Dinner" className="checkbox" />
                         <span className="label-text ml-2">Dinner</span>
                     </label>
                     <label className="label cursor-pointer">
-                        <input type="checkbox" name="categories" value="Dessert" className="checkbox" required/>
+                        <input type="checkbox" name="categories" value="Dessert" className="checkbox" />
                         <span className="label-text ml-2">Dessert</span>
                     </label>
                     <label className="label cursor-pointer">
-                        <input type="checkbox" name="categories" value="Vegan" className="checkbox" required/>
+                        <input type="checkbox" name="categories" value="Vegan" className="checkbox" />
                         <span className="label-text ml-2">Vegan</span>
                     </label>
                 </div>

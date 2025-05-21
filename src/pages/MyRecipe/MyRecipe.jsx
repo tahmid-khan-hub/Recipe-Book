@@ -4,6 +4,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { Fade } from "react-awesome-reveal";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Swal from "sweetalert2";
 
 const MyRecipe = () => {
   const { user } = use(AuthContext);
@@ -27,7 +28,7 @@ const MyRecipe = () => {
     }
   }, [user, Allrecipe]);
 
-  const handleRecipeUpdated = e =>{
+  const handleRecipeUpdated = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -39,22 +40,61 @@ const MyRecipe = () => {
     console.log(newRecipe);
 
     fetch(`http://localhost:3000/recipes/${selectedRecipe._id}`, {
-      method: 'PUT',
-      headers:{
-        'content-type':'application/json'
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(newRecipe)
+      body: JSON.stringify(newRecipe),
     })
-      .then(res => res.json())
-      .then(data =>{
-        console.log('after update', data);
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("after update", data);
         setSelectedRecipe(null);
-      })
-  }
+      });
+  };
+
+  const handleDeleteRecipe = (id) => {
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        fetch(`http://localhost:3000/recipes/${id}`, {
+          method: 'DELETE',
+          
+        })
+          .then(res => res.json())
+          .then(data =>{
+            console.log('deleted', data);
+            setMyRecipe((prev) => prev.filter((recipe) => recipe._id !== id));
+
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+
+
+        // Swal.fire({
+        //   title: "Deleted!",
+        //   text: "Your file has been deleted.",
+        //   icon: "success",
+        // });
+      }
+    });
+  };
 
   return (
     <div>
-      <div data-aos="fade-up" className="my-10 px-4 md:px-10 ">
+      <div className="my-10 px-4 md:px-10 ">
         <h2 className="text-3xl font-bold mb-12 text-orange-800 text-center">
           My Recipes
         </h2>
@@ -63,6 +103,7 @@ const MyRecipe = () => {
           <div className="space-y-16 max-w-5xl mx-auto">
             {myRecipe.map((recipe) => (
               <div
+                data-aos="fade-up"
                 key={recipe._id}
                 className="flex flex-col md:flex-row bg-white shadow-xl rounded-xl overflow-hidden"
               >
@@ -79,15 +120,25 @@ const MyRecipe = () => {
                       </h3>
                     </Fade>
                     <p className="text-sm text-gray-600">
-                      <strong>Cuisine:</strong> {recipe.cuisineType} | <strong>Prep Time:</strong> {recipe.prepTime} min
+                      <strong>Cuisine:</strong> {recipe.cuisineType} |{" "}
+                      <strong>Prep Time:</strong> {recipe.prepTime} min
                     </p>
                     <div className="mt-2 text-sm text-gray-700">
-                      <p><strong>Ingredients:</strong> {recipe.ingredients}</p>
-                      <p className="my-3"><strong>Instructions:</strong> {recipe.instructions}</p>
-                      <p className="mt-1">
-                        <strong>Categories:</strong> {Array.isArray(recipe.categories) ? recipe.categories.join(", ") : recipe.categories}
+                      <p>
+                        <strong>Ingredients:</strong> {recipe.ingredients}
                       </p>
-                      <p className="mt-1"><strong>❤️ Likes:</strong> {recipe.likeCount}</p>
+                      <p className="my-3">
+                        <strong>Instructions:</strong> {recipe.instructions}
+                      </p>
+                      <p className="mt-1">
+                        <strong>Categories:</strong>{" "}
+                        {Array.isArray(recipe.categories)
+                          ? recipe.categories.join(", ")
+                          : recipe.categories}
+                      </p>
+                      <p className="mt-1">
+                        <strong>❤️ Likes:</strong> {recipe.likeCount}
+                      </p>
                     </div>
                   </div>
                   <div className="flex gap-3 mt-4">
@@ -100,7 +151,10 @@ const MyRecipe = () => {
                     >
                       Update
                     </button>
-                    <button className="px-4 py-1 rounded text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 border-red-800 shadow-md shadow-red-300 text-sm">
+                    <button
+                      onClick={() => handleDeleteRecipe(recipe._id)}
+                      className="px-4 py-1 rounded text-white bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 border-red-800 shadow-md shadow-red-300 text-sm"
+                    >
                       Delete
                     </button>
                   </div>
@@ -118,7 +172,9 @@ const MyRecipe = () => {
       {selectedRecipe && (
         <dialog id="my_modal_3" className="modal py-5" open>
           <div className="modal-box max-h-[90vh] overflow-y-auto">
-            <h2 className="text-center font-semibold text-2xl mb-5 text-orange-800">Update Recipe</h2>
+            <h2 className="text-center font-semibold text-2xl mb-5 text-orange-800">
+              Update Recipe
+            </h2>
             <form onSubmit={handleRecipeUpdated} method="dialog">
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-orange-800"
@@ -129,27 +185,55 @@ const MyRecipe = () => {
 
               <div>
                 <label className="label block font-bold mb-1">PhotoURL:</label>
-                <input className="input w-full" type="text" name="photoURL" defaultValue={selectedRecipe.photoURL} />
+                <input
+                  className="input w-full"
+                  type="text"
+                  name="photoURL"
+                  defaultValue={selectedRecipe.photoURL}
+                />
               </div>
 
               <div>
                 <label className="label block font-bold mb-1">Title:</label>
-                <input className="input w-full" type="text" name="title" defaultValue={selectedRecipe.title} />
+                <input
+                  className="input w-full"
+                  type="text"
+                  name="title"
+                  defaultValue={selectedRecipe.title}
+                />
               </div>
 
               <div className="col-span-1 md:col-span-2">
-                <label className="label block font-bold mb-1">Ingredients:</label>
-                <textarea className="textarea w-full h-36" name="ingredients" defaultValue={selectedRecipe.ingredients} />
+                <label className="label block font-bold mb-1">
+                  Ingredients:
+                </label>
+                <textarea
+                  className="textarea w-full h-36"
+                  name="ingredients"
+                  defaultValue={selectedRecipe.ingredients}
+                />
               </div>
 
               <div className="col-span-1 md:col-span-2">
-                <label className="label block font-bold mb-1">Instructions:</label>
-                <textarea className="textarea w-full h-56" name="instructions" defaultValue={selectedRecipe.instructions} />
+                <label className="label block font-bold mb-1">
+                  Instructions:
+                </label>
+                <textarea
+                  className="textarea w-full h-56"
+                  name="instructions"
+                  defaultValue={selectedRecipe.instructions}
+                />
               </div>
 
               <div>
-                <label className="label block font-bold mb-1">Cuisine Type:</label>
-                <select className="select w-full" name="cuisineType" defaultValue={selectedRecipe.cuisineType}>
+                <label className="label block font-bold mb-1">
+                  Cuisine Type:
+                </label>
+                <select
+                  className="select w-full"
+                  name="cuisineType"
+                  defaultValue={selectedRecipe.cuisineType}
+                >
                   <option value="Italian">Italian</option>
                   <option value="Mexican">Mexican</option>
                   <option value="Indian">Indian</option>
@@ -159,25 +243,39 @@ const MyRecipe = () => {
               </div>
 
               <div>
-                <label className="label block font-bold mb-1">Preparation Time (minutes):</label>
-                <input className="input w-full" type="number" name="prepTime" min="0" defaultValue={selectedRecipe.prepTime} />
+                <label className="label block font-bold mb-1">
+                  Preparation Time (minutes):
+                </label>
+                <input
+                  className="input w-full"
+                  type="number"
+                  name="prepTime"
+                  min="0"
+                  defaultValue={selectedRecipe.prepTime}
+                />
               </div>
 
               <div className="col-span-1 md:col-span-2">
-                <label className="label block font-bold mb-2">Categories:</label>
+                <label className="label block font-bold mb-2">
+                  Categories:
+                </label>
                 <div className="flex flex-col md:flex-row flex-wrap gap-2 md:gap-3">
-                  {["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map((cat) => (
-                    <label key={cat} className="label cursor-pointer">
-                      <input
-                        type="checkbox"
-                        name="categories"
-                        value={cat}
-                        className="checkbox"
-                        defaultChecked={selectedRecipe?.categories?.includes(cat)}
-                      />
-                      <span className="label-text ml-2">{cat}</span>
-                    </label>
-                  ))}
+                  {["Breakfast", "Lunch", "Dinner", "Dessert", "Vegan"].map(
+                    (cat) => (
+                      <label key={cat} className="label cursor-pointer">
+                        <input
+                          type="checkbox"
+                          name="categories"
+                          value={cat}
+                          className="checkbox"
+                          defaultChecked={selectedRecipe?.categories?.includes(
+                            cat
+                          )}
+                        />
+                        <span className="label-text ml-2">{cat}</span>
+                      </label>
+                    )
+                  )}
                 </div>
               </div>
               <button className="btn mt-9 mb-4 w-full">Update Recipe</button>
