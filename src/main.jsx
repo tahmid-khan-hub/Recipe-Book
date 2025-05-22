@@ -17,6 +17,8 @@ import Register from './pages/Register/Register.jsx'
 import RecipeDetails from './pages/RecipeDetails/RecipeDetails.jsx'
 import AuthProvider from './context/AuthProvider.jsx'
 import PrivateRoute from './context/PrivateRoute.jsx'
+import Loader from './pages/Loader/Loader.jsx'
+import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
@@ -27,11 +29,13 @@ const router = createBrowserRouter([
         path: "",
         loader: () => fetch('http://localhost:3000/recipes'),
         element: <Home></Home>,
+        hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: "allrecipe",
         loader: () => fetch('http://localhost:3000/recipes'),
-        element: <AllRecipe></AllRecipe>
+        element: <AllRecipe></AllRecipe>,
+        hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: "addrecipe",
@@ -44,7 +48,8 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <MyRecipe></MyRecipe>
-        </PrivateRoute>
+        </PrivateRoute>,
+        hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: "login",
@@ -59,10 +64,15 @@ const router = createBrowserRouter([
         loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <RecipeDetails></RecipeDetails>
-        </PrivateRoute>
+        </PrivateRoute>,
+        hydrateFallbackElement: <Loader></Loader>
       }
     ]
   },
+  {
+    path: "*",
+    element: <ErrorPage></ErrorPage>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

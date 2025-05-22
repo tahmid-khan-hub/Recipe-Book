@@ -1,12 +1,16 @@
-import React, { use, useEffect } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import { updateProfile } from "firebase/auth";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
+import Loader from "../Loader/Loader";
 
 const Register = () => {
+
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     AOS.init({
       duration: 1000,
@@ -14,10 +18,20 @@ const Register = () => {
     });
   }, []);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  
+    return () => clearTimeout(timeout);
+  }, []);
+
   const { newUser, googleSignIn } = use(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  if(loading) return <Loader></Loader>;
 
   const handleNewUser = (e) => {
     e.preventDefault();
