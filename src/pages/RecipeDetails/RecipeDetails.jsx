@@ -34,7 +34,7 @@ const RecipeDetails = () => {
   const handleLike = () =>{
     setLikes((prev) => prev + 1);
 
-    fetch(`http://localhost:3000/recipes/${recipe._id}`, {
+    fetch(`https://recipe-book-app-server-sage.vercel.app/recipes/${recipe._id}`, {
       method: 'PATCH',
       headers:{
         'content-type':'application/json'
