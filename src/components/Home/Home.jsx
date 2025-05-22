@@ -6,7 +6,6 @@ import IngredientOfWeek from '../IngredientOfWeek/IngredientOfWeek';
 import { useLoaderData } from 'react-router';
 
 
-
 const Home = () => {
     const recipeData = useLoaderData();
 

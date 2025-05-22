@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { Fade } from "react-awesome-reveal";
+import { AiOutlineLike } from "react-icons/ai";
 
 const TopRecipe = ({ recipeData }) => {
   console.log(recipeData);
@@ -51,8 +52,8 @@ const TopRecipe = ({ recipeData }) => {
                 <p className="text-gray-600 mt-2">
                   Cuisine: {recipe.cuisineType}
                 </p>
-                <p className="text-gray-800 mt-2 font-medium">
-                  Likes: {recipe.likeCount}
+                <p className="text-gray-800 flex mt-2 font-medium">
+                  <AiOutlineLike size={20} className="mr-2 mt-[2px]"></AiOutlineLike> {recipe.likeCount}
                 </p>
                 <div className="relative h-full mt-[80px]">
                   <Link to={`/recipeDetails/${recipe._id}`}><button className="absolute bottom-4 right-4 px-4 py-2 rounded-md text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 ">

@@ -1,43 +1,65 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { FaThumbsUp } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { AuthContext } from "../../context/AuthContext";
+import Swal from "sweetalert2";
+
 
 const RecipeDetails = () => {
+
+  const {user} = use(AuthContext);
+
   const id = useParams();
   const data = useLoaderData();
 
   const recipe = data.find((r) => r._id.toString() == id.id);
   console.log(recipe);
 
-  // const [likeCount, setLikeCount] = useState(recipe?.likeCount || 0);
+  const [likes, setLikes] = useState(recipe.likeCount);
+
 
   useEffect(() =>{
     window.scrollTo(0,0);
   },[])
 
-  
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
-  // const handleLike = () =>{
-  //   setLikeCount(prev => prev + 1);
+  const handleLike = () =>{
+    setLikes((prev) => prev + 1);
 
-  //   fetch(`http://localhost:3000/recipes/${id}/like`, {
-  //     method: 'PATCH',
-  //     headers:{
-  //       'content-type':'application/json'
-  //     },
-  //     body:JSON.stringify({ likeCount: likeCount + 1 })
-  //   })
-  //     .then(res => res.json())
-  //     .then(err =>{
-  //       console.log(err);
-  //     })
-  // }
+    fetch(`http://localhost:3000/recipes/${recipe._id}`, {
+      method: 'PATCH',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify({likeCount: likes + 1})
+    })
+      .then(res => res.json())
+      .then(data =>{
+        console.log(data);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Recipe liked successfully!",
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+      })
+  }
 
   return (
     <div>
-      <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl overflow-hidden p-6 mt-16 mb-24">
+      <div data-aos="fade-up" className="max-w-2xl mx-auto bg-white rounded-2xl overflow-hidden p-6 mt-16 mb-24 border-1 border-green-600 hover:shadow-md hover:shadow-green-600 shadow-xl">
         <p className="text-center text-lg font-medium mb-11 text-orange-700">
-         people interested in this recipe
+        {likes} people interested in this recipe
         </p>
 
         <h2 className="text-2xl font-bold mb-4 text-center text-green-600">{recipe.title}</h2>
@@ -49,12 +71,23 @@ const RecipeDetails = () => {
         />
 
         <div className="text-center mb-6">
+          
+          {
+            user.email == recipe.userEmail ? <button
+            disabled
+            
+            onClick={handleLike}
+            className="cursor-not-allowed text-white bg-gradient-to-r from-gray-300 to-gray-400  border-gray-800 shadow-md shadow-gray-300 font-semibold py-2 px-6 rounded-full transition duration-300 flex items-center justify-center gap-2 mx-auto"
+          >
+            <FaThumbsUp /> Like
+          </button> : 
           <button
-          // onClick={handleLike}
+            onClick={handleLike}
             className=" text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 font-semibold py-2 px-6 rounded-full transition duration-300 flex items-center justify-center gap-2 mx-auto"
           >
             <FaThumbsUp /> Like
           </button>
+          }
         </div>
 
         <div className="space-y-3 text-gray-700">
