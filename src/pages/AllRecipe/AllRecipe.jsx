@@ -9,6 +9,7 @@ const AllRecipe = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    document.title = "RecipeBook | AllRecipe"
     AOS.init({
       duration: 1000,
       once: false,

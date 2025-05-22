@@ -13,6 +13,7 @@ const Login = () => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
+    document.title = "RecipeBook | Login"
     AOS.init({
       duration: 1000,
       once: false,

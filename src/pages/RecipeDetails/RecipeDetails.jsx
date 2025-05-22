@@ -21,6 +21,7 @@ const RecipeDetails = () => {
 
 
   useEffect(() =>{
+    document.title = "RecipeBook | RecipeDetails"
     window.scrollTo(0,0);
   },[])
 

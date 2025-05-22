@@ -14,6 +14,7 @@ const Register = () => {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
+    document.title = "RecipeBook | Register"
     AOS.init({
       duration: 1000,
       once: false,

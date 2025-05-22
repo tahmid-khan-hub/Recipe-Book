@@ -13,6 +13,7 @@ const MyRecipe = () => {
   const Allrecipe = useLoaderData();
 
   useEffect(() => {
+    document.title = "RecipeBook | MyRecipe"
     AOS.init({
       duration: 1000,
       once: false,

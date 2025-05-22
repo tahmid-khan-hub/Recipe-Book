@@ -12,6 +12,7 @@ const AddRecipe = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        document.title = "RecipeBook | AddRecipe"
         AOS.init({
           duration: 1000,
           once: false,
