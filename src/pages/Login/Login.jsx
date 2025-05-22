@@ -95,19 +95,19 @@ const Login = () => {
           Login Now
         </h1>
         <form onSubmit={handleUser} className="fieldset">
-          <label className="label text-green-700">Email</label>
+          <label className="label text-gray-700">Email</label>
           <input
             type="email"
             name="email"
-            className="input text-green-700"
+            className="input text-gray-600"
             placeholder="Enter your email"
             required
           />
-          <label className="label mt-2 text-green-700">Password</label>
-          <div className="flex relative">
+          <label className="label mt-2 text-gray-700">Password</label>
+          <div className="flex relative text-gray-600">
             <input
               type={`${show ? "text" : "password"}`}
-              className="input mb-3 border-1 border-purple-400"
+              className="input mb-3 border-1 border-gray-400"
               name="password"
               placeholder="Enter your Password"
               required
