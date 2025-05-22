@@ -5,10 +5,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
 import Loader from "../Loader/Loader";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Login = () => {
 
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     AOS.init({
@@ -101,13 +103,18 @@ const Login = () => {
             required
           />
           <label className="label mt-2 text-green-700">Password</label>
-          <input
-            type="password"
-            name="password"
-            className="input text-green-700"
-            placeholder="Enter your password"
-            required
-          />
+          <div className="flex relative">
+            <input
+              type={`${show ? "text" : "password"}`}
+              className="input mb-3 border-1 border-purple-400"
+              name="password"
+              placeholder="Enter your Password"
+              required
+            />
+            <span onClick={()=> setShow(!show)}  className="absolute right-7 top-2 cursor-pointer">
+            {show ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </span>
+          </div>
           <div className="mt-3">
             <a className="link link-hover text-gray-600">Forgot password?</a>
           </div>

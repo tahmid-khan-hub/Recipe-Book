@@ -6,10 +6,12 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
 import Loader from "../Loader/Loader";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const Register = () => {
 
   const [loading, setLoading] = useState(true);
+  const [show, setShow] = useState(false)
 
   useEffect(() => {
     AOS.init({
@@ -160,13 +162,18 @@ const Register = () => {
             required
           />
           <label className="label mt-2 text-green-700">Password</label>
-          <input
-            type="password"
-            className="input text-green-700"
-            name="password"
-            placeholder="Password"
-            required
-          />
+          <div className="flex relative">
+            <input
+              type={`${show ? "text" : "password"}`}
+              className="input mb-3 border-1 border-purple-400"
+              name="password"
+              placeholder="Enter your Password"
+              required
+            />
+            <span onClick={()=> setShow(!show)}  className="absolute right-7 top-2 cursor-pointer">
+            {show ? <FaEyeSlash size={20} /> : <FaEye size={20} />}
+            </span>
+          </div>
 
           <button className="btn btn-neutral my-4 mt-7 text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">
             Register
