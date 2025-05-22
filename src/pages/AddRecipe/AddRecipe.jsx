@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthContext";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Swal from "sweetalert2";
 
 const AddRecipe = () => {
 
@@ -39,6 +40,11 @@ const AddRecipe = () => {
             .then(data => {
                 console.log('new recipe added', data);
                 navigate("/myrecipe")
+                Swal.fire({
+                    title: "Recipe added successfully",
+                    icon: "success",
+                    text: "Welcome!",
+                });
             })
     }
 

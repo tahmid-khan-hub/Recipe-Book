@@ -167,7 +167,7 @@ const MyRecipe = () => {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center">
+          <p className="text-gray-500 text-center mb-60">
             You haven't added any recipes yet.
           </p>
         )}

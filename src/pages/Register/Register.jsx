@@ -4,22 +4,22 @@ import { AuthContext } from "../../context/AuthContext";
 import { updateProfile } from "firebase/auth";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Swal from "sweetalert2";
 
 const Register = () => {
-
   useEffect(() => {
-      AOS.init({
-          duration: 1000,
-          once: false,
-      });
-     }, []);
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
 
-  const {newUser, googleSignIn} = use(AuthContext);
+  const { newUser, googleSignIn } = use(AuthContext);
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleNewUser = e =>{
+  const handleNewUser = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -30,62 +30,137 @@ const Register = () => {
 
     console.log(name, photo, email, password);
 
-    if(password.length < 6){
-      alert('must be 6 char');
+    if (password.length < 6) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must contain 6 characters",
+      });
       return;
-    }
-    else if(!/[a-z]/.test(password) || !/[A-Z]/.test(password)){
-      alert('must be upper and lower');
+    } else if (!/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password must have Uppercase and Lowercase letter.",
+      });
       return;
     }
 
     newUser(email, password)
-    .then(res => {
-      const createdUser = res.user;
-      updateProfile(createdUser, {
-        displayName: name,
-        photoURL: photo
-      }).then(() => {
-        navigate("/");
-      }).catch(err => {
+      .then((res) => {
+        const createdUser = res.user;
+
+        if (!name || !photo) {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Name and Photo URL cannot be empty.",
+          });
+          return;
+        }
+
+        updateProfile(createdUser, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => {
+            navigate("/");
+            Swal.fire({
+              title: "Registration Successful!",
+              icon: "success",
+              text: "Welcome!",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: "Failed to update profile",
+            });
+          });
+      })
+      .catch((err) => {
         console.log(err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Already have an account",
+        });
       });
-    })
-    .catch(err => {
-      console.log(err);
-    });
+  };
 
-  }
-
-  const handleGoogleSignIn = () =>{
+  const handleGoogleSignIn = () => {
     googleSignIn()
-      .then(res =>{
+      .then((res) => {
         console.log(res.user);
-        navigate(`${location.state? location.state : "/"}`)
+        navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          title: "Registration successful",
+          icon: "success",
+          draggable: true,
+        });
       })
-      .catch(err =>{
+      .catch((err) => {
         console.log(err);
-      })
-  }
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Failed to register",
+        });
+      });
+  };
 
   return (
-    <div data-aos="fade-up" className="card bg-base-100 w-11/12 max-w-sm mx-auto my-24 shrink-0 shadow-2xl border-1 border-green-600 hover:shadow-xl hover:shadow-green-600">
+    <div
+      data-aos="fade-up"
+      className="card bg-base-100 w-11/12 max-w-sm mx-auto my-24 shrink-0 shadow-2xl border-1 border-green-600 hover:shadow-xl hover:shadow-green-600"
+    >
       <div className="card-body">
         <h1 className="text-3xl text-center mb-3 font-bold text-green-700">
           Register
         </h1>
         <form onSubmit={handleNewUser} className="fieldset">
           <label className="label mt-2 text-green-700">Name</label>
-          <input type="text" className="input text-green-700" name="name" placeholder="Enter your name" required/>
+          <input
+            type="text"
+            className="input text-green-700"
+            name="name"
+            placeholder="Enter your name"
+            required
+          />
           <label className="label mt-2 text-green-700">Email</label>
-          <input type="email" className="input text-green-700" name="email" placeholder="Email" required/>
+          <input
+            type="email"
+            className="input text-green-700"
+            name="email"
+            placeholder="Email"
+            required
+          />
           <label className="label mt-2 text-green-700">PhotoURL</label>
-          <input type="text" className="input text-green-700" name="photo" placeholder="Enter your PhotoURL" required/>
+          <input
+            type="text"
+            className="input text-green-700"
+            name="photo"
+            placeholder="Enter your PhotoURL"
+            required
+          />
           <label className="label mt-2 text-green-700">Password</label>
-          <input type="password" className="input text-green-700" name="password" placeholder="Password" required/>
-       
-          <button className="btn btn-neutral my-4 mt-7 text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">Register</button>
-          <button onClick={handleGoogleSignIn} className="btn text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">
+          <input
+            type="password"
+            className="input text-green-700"
+            name="password"
+            placeholder="Password"
+            required
+          />
+
+          <button className="btn btn-neutral my-4 mt-7 text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">
+            Register
+          </button>
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300"
+          >
             <svg
               aria-label="Google logo"
               width="16"
@@ -117,7 +192,12 @@ const Register = () => {
           </button>
         </form>
       </div>
-      <p className="text-gray-600 ml-7 mb-12">Already have an account? <Link className="text-green-700 font-bold" to="/login">Click here</Link></p>
+      <p className="text-gray-600 ml-7 mb-12">
+        Already have an account?{" "}
+        <Link className="text-green-700 font-bold" to="/login">
+          Click here
+        </Link>
+      </p>
     </div>
   );
 };
