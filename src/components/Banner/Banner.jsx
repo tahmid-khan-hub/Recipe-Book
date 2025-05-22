@@ -13,7 +13,7 @@ const Banner = () => {
 
   return (
     <div data-aos="fade-up"
-      className="w-full bg-cover bg-center flex items-center justify-center text-white mt-3"
+      className="w-full bg-cover bg-center flex items-center justify-center text-white mt-9"
       style={{
         backgroundImage: "url('https://i.ibb.co/Rkq1Rh0n/image.png')",
       }}
