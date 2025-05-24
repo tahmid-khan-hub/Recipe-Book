@@ -1,5 +1,5 @@
 # Recipe Book
-Live Site: http://amazing-crepe-4d717c.netlify.app
+Live Site: https://amazing-crepe-4d717c.netlify.app
 
 Recipe Book is a modern and user-friendly web application designed for food enthusiasts to manage their recipes, discover new dishes, and connect with fellow home cooks. Whether you're experimenting in the kitchen or saving family favorites, Recipe Book makes it simple and fun.
 
