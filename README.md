@@ -1,37 +1,55 @@
-# Recipe Book
-Live Site: https://amazing-crepe-4d717c.netlify.app
 
-Recipe Book is a modern and user-friendly web application designed for food enthusiasts to manage their recipes, discover new dishes, and connect with fellow home cooks. Whether you're experimenting in the kitchen or saving family favorites, Recipe Book makes it simple and fun.
+# 🍽️ Recipe Book
 
-🌟 Features
-🧾 Add and Manage Your Own Recipes
-Create, edit, and organize all your personal recipes in one place with an intuitive interface.
+### 📝 Project Overview  
+**Recipe Book** is a modern and user-friendly web application designed for food enthusiasts to manage their recipes, discover new dishes, and connect with fellow home cooks. Whether you're experimenting in the kitchen or saving family favorites, Recipe Book makes it simple and fun.
 
-🌍 Discover Recipes from Other Users
-Explore a wide collection of recipes shared by fellow users from around the world.
+---
 
-❤ Like Recipes You Love
-Show appreciation for your favorite dishes and help others discover popular recipes through likes.
+### 🛠 Tech Stack & Dependencies  
+- **React 19** – Fast and scalable frontend library  
+- **Tailwind CSS 4** – Utility-first CSS for responsive styling  
+- **Firebase** – Authentication and real-time database  
+- **React Router 7** – Routing between app pages  
+- **AOS (Animate On Scroll)** – Smooth scroll animations  
+- **SweetAlert2** – Custom pop-ups and alerts  
+- **React Icons** – Consistent icon library  
+- **React Tooltip** – Lightweight tooltips  
+- **React Awesome Reveal** – Reveal animations for engaging UI
 
-📝 Add Recipes to Your Wishlist
-Save interesting recipes to a wishlist to cook later or revisit whenever you're ready.
+---
 
-📊 Top Recipes Section
-A dynamic section that highlights the most liked recipes, helping users discover trending meals.
+### ✨ Key Features  
+- **🧾 Add and Manage Recipes** – Create, edit, and organize personal recipes  
+- **🌍 Discover Recipes** – Explore shared recipes from other users  
+- **❤ Like Recipes** – Like and highlight your favorite dishes  
+- **📝 Wishlist** – Save recipes to cook later  
+- **📊 Top Recipes Section** – View most-liked and trending recipes
 
-🛠 Tech Stack & Dependencies
-React 19 – Fast and scalable frontend framework
+---
 
-TailwindCSS 4 – Utility-first styling for responsive design
+### 🖥️ How to Run Locally  
 
-Firebase – Authentication and real-time database for user data
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/recipe-book.git
+   cd recipe-book
+   ```
 
-AOS – Smooth scroll animations
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-React Router 7 – Seamless routing between pages
+3. **Set up Firebase**  
+   Create a `firebase.config.js` file inside the `src` folder with your Firebase credentials.
 
-SweetAlert2 – Custom pop-ups and alerts
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-React Icons – Beautiful and consistent icons
+---
 
-React Tooltip & React Awesome Reveal – Enhanced UI/UX with tooltips and animations
+### 🔗 Live Link 
+- 🌐 [Live Site](https://amazing-crepe-4d717c.netlify.app)  
