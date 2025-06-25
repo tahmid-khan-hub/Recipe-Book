@@ -32,8 +32,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/recipe-book.git
-   cd recipe-book
+   git clone https://github.com/tahmid-khan-hub/Recipe-Book.git
+   cd Recipe-Book
    ```
 
 2. **Install dependencies**
