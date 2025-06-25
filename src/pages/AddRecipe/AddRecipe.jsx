@@ -30,7 +30,7 @@ const AddRecipe = () => {
 
         console.log(newRecipe);
 
-        fetch('https://recipe-book-app-server-sage.vercel.app/recipes', {
+        fetch('http://localhost:3000/recipes', {
             method: 'POST',
             headers: {
                 'content-type':'application/json'

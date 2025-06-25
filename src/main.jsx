@@ -27,13 +27,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        loader: () => fetch('https://recipe-book-app-server-sage.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <Home></Home>,
         hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: "allrecipe",
-        loader: () => fetch('https://recipe-book-app-server-sage.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <AllRecipe></AllRecipe>,
         hydrateFallbackElement: <Loader></Loader>
       },
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "myrecipe",
-        loader: () => fetch('https://recipe-book-app-server-sage.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <MyRecipe></MyRecipe>
         </PrivateRoute>,
@@ -61,7 +61,7 @@ const router = createBrowserRouter([
       },
       {
         path: "recipeDetails/:id",
-        loader: () => fetch('https://recipe-book-app-server-sage.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <RecipeDetails></RecipeDetails>
         </PrivateRoute>,
