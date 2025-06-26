@@ -29,15 +29,18 @@ const Navbar = () => {
       <NavLink className="mr-5" to="/">
         <li>Home</li>
       </NavLink>
+      <NavLink className="mr-5" to="dashboard">
+        <li>DashBoard</li>
+      </NavLink>
       <NavLink className="mr-5" to="allrecipe">
         <li>All Recipes</li>
       </NavLink>
       <NavLink className="mr-5" to="addrecipe">
         <li>Add Recipe</li>
       </NavLink>
-      <NavLink to="myrecipe">
+      {/* <NavLink to="myrecipe">
         <li>My Recipes</li>
-      </NavLink>
+      </NavLink> */}
     </>
   );
 

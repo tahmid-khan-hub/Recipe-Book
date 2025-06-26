@@ -23,6 +23,7 @@ import FaQ from './pages/FaQ/FaQ.jsx'
 import About from './pages/About/About.jsx'
 import Terms from './pages/Terms/Terms.jsx'
 import Privacy from './pages/Privacy/Privacy.jsx'
+import DashBoardLayout from './layout/DashBoardLayout.jsx'
 
 const router = createBrowserRouter([
   {
@@ -47,14 +48,7 @@ const router = createBrowserRouter([
           <AddRecipe></AddRecipe>
         </PrivateRoute>
       },
-      {
-        path: "myrecipe",
-        loader: () => fetch('http://localhost:3000/recipes'),
-        element: <PrivateRoute>
-          <MyRecipe></MyRecipe>
-        </PrivateRoute>,
-        hydrateFallbackElement: <Loader></Loader>
-      },
+      
       {
         path: "login",
         element: <Login></Login>
@@ -87,6 +81,22 @@ const router = createBrowserRouter([
         path: 'privacy',
         element: <Privacy></Privacy>
       }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <PrivateRoute>
+      <DashBoardLayout></DashBoardLayout>
+    </PrivateRoute>,
+    children:[
+      {
+        path: "dashboard/myrecipe",
+        loader: () => fetch('http://localhost:3000/recipes'),
+        element: <PrivateRoute>
+          <MyRecipe></MyRecipe>
+        </PrivateRoute>,
+        hydrateFallbackElement: <Loader></Loader>
+      },
     ]
   },
   {
