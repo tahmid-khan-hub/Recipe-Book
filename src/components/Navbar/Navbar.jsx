@@ -24,7 +24,7 @@ const Navbar = () => {
       });
   };
 
-  const links = (
+  const privateLinks = (
     <>
       <NavLink className="mr-5" to="/">
         <li>Home</li>
@@ -37,6 +37,20 @@ const Navbar = () => {
       </NavLink>
       <NavLink to="myrecipe">
         <li>My Recipes</li>
+      </NavLink>
+    </>
+  );
+
+  const links = (
+    <>
+      <NavLink className="mr-5" to="/">
+        <li>Home</li>
+      </NavLink>
+      <NavLink className="mr-5" to="allrecipe">
+        <li>All Recipes</li>
+      </NavLink>
+      <NavLink to="faq">
+        <li>FaQ</li>
       </NavLink>
     </>
   );
@@ -66,31 +80,23 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-green-100 text-green-700 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
-            <NavLink to="/">
-              <li>Home</li>
-            </NavLink>
-            <NavLink to="allrecipe">
-              <li>All Recipes</li>
-            </NavLink>
-            <NavLink to="addrecipe">
-              <li>Add Recipe</li>
-            </NavLink>
-            <NavLink to="myrecipe">
-              <li>My Recipes</li>
-            </NavLink>
+            {user ? privateLinks : links}
           </ul>
         </div>
-        <a className="text-xl font-semibold ml-1"><span className="text-3xl text-orange-600 font-bold">R</span>ecipeB<span className="text-green-700 font-bold">oo</span>k</a>
+        <a className="text-xl font-semibold ml-1">
+          <span className="text-3xl text-orange-600 font-bold">R</span>ecipeB
+          <span className="text-green-700 font-bold">oo</span>k
+        </a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1">{user ? privateLinks : links}</ul>
       </div>
       <div className="navbar-end">
         <a onClick={() => setDarkMode(!darkMode)} className="theme-toggle">
           {darkMode ? <FiSun size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
         </a>
         <img
-          id="user-avatar" 
+          id="user-avatar"
           className="w-9 h-9 mr-3 ml-2 object-cover rounded-full ring-2 ring-green-500 ring-offset-2 ring-offset-white"
           src={user?.photoURL?.trim() || "https://i.ibb.co/B5N1Fzbn/image.png"}
           alt="User Avatar"

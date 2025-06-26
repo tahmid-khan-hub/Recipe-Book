@@ -19,6 +19,7 @@ import AuthProvider from './context/AuthProvider.jsx'
 import PrivateRoute from './context/PrivateRoute.jsx'
 import Loader from './pages/Loader/Loader.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
+import FaQ from './pages/FaQ/FaQ.jsx'
 
 const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
           <RecipeDetails></RecipeDetails>
         </PrivateRoute>,
         hydrateFallbackElement: <Loader></Loader>
+      },
+      {
+        path: 'faq',
+        element: <FaQ></FaQ>
       }
     ]
   },
