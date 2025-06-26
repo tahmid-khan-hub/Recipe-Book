@@ -21,6 +21,8 @@ import Loader from './pages/Loader/Loader.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 import FaQ from './pages/FaQ/FaQ.jsx'
 import About from './pages/About/About.jsx'
+import Terms from './pages/Terms/Terms.jsx'
+import Privacy from './pages/Privacy/Privacy.jsx'
 
 const router = createBrowserRouter([
   {
@@ -76,6 +78,14 @@ const router = createBrowserRouter([
       {
         path: 'about',
         element: <About></About>
+      },
+      {
+        path: 'terms',
+        element: <Terms></Terms>
+      },
+      {
+        path: 'privacy',
+        element: <Privacy></Privacy>
       }
     ]
   },
