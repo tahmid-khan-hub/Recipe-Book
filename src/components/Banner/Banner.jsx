@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Fade } from "react-awesome-reveal";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router";
 
 const Banner = () => {
   useEffect(() => {
@@ -14,24 +15,27 @@ const Banner = () => {
   return (
     <div
       data-aos="fade-up"
-      className=" bg-cover bg-center flex items-center justify-center text-white mt-5 max-w-[1380px] mx-auto"
+      className="relative bg-cover bg-center flex items-center justify-center text-white mt-5 max-w-[1380px] mx-auto min-h-[400px]"
       style={{
         backgroundImage: "url('https://i.ibb.co/Rkq1Rh0n/image.png')",
       }}
     >
-      <div className="text-green-700 bg-opacity-60 p-8 rounded-xl max-w-2xl text-center my-10 md:my-40">
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/15 z-0"></div>
+
+      <div className="relative z-10 bg-opacity-60 p-8 rounded-xl max-w-2xl text-center my-10 md:my-40">
         <Fade>
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">
+          <h1 className="text-2xl md:text-[40px] font-bold mb-4 text-green-700">
             Welcome to Recipe Book App
           </h1>
-          <p className="text-base md:text-lg mb-6">
+          <p className="text-base md:text-lg mb-6 text-gray-600">
             Manage your recipes, explore others, and save your favorites easily — your personal cooking companion.
           </p>
         </Fade>
 
-        <button className="btn text-white bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold">
+        <Link to="allrecipe"><button className="btn text-white bg-orange-500 hover:bg-orange-600 rounded-lg font-semibold">
           Get Started
-        </button>
+        </button></Link>
       </div>
     </div>
   );
