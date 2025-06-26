@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { Link } from "react-router";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const chefsPicks = [
   {
@@ -25,15 +28,24 @@ const chefsPicks = [
 ];
 
 const ChefsPick = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+    });
+  }, []);
   return (
     <section className="my-28 px-4">
-      <h2 className="text-3xl text-orange-800 font-bold text-center mb-4">Chef’s Pick</h2>
+      <h2 className="text-3xl text-orange-800 font-bold text-center mb-4">
+        Chef’s Pick
+      </h2>
       <p className="text-center text-gray-500 text-lg mb-7">
         Handpicked recipes by our chefs — tried, tested, and taste-approved!
       </p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {chefsPicks.map((recipe) => (
           <div
+            data-aos="zoom-out"
             key={recipe.id}
             className="card bg-base-100 shadow-md border border-green-400 shadow-green-400 duration-300"
           >
@@ -45,7 +57,9 @@ const ChefsPick = () => {
               />
             </figure>
             <div className="card-body">
-              <h3 className="card-title text-orange-800 font-bold">{recipe.title}</h3>
+              <h3 className="card-title text-orange-800 font-bold">
+                {recipe.title}
+              </h3>
               <p className="text-gray-600">{recipe.description}</p>
               <div className="card-actions justify-end">
                 <Link to={`/recipeDetails/${recipe.id}`}>
