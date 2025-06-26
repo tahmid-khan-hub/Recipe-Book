@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { AiOutlineLike } from "react-icons/ai";
 
 const AllRecipe = () => {
   const allRecipeData = useLoaderData();
@@ -9,7 +10,7 @@ const AllRecipe = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "RecipeBook | AllRecipe"
+    document.title = "RecipeBook | AllRecipe";
     AOS.init({
       duration: 1000,
       once: false,
@@ -63,33 +64,34 @@ const AllRecipe = () => {
           <div
             data-aos="flip-right"
             key={recipe._id}
-            className="bg-white rounded-2xl overflow-hidden p-4 flex flex-col border-1 border-green-600 shadow-md hover:shadow-md hover:shadow-green-600"
+            className="bg-white rounded-xl overflow-hidden p-2 flex flex-col border-1 border-green-600 shadow-xl "
           >
             <img
               src={recipe.photoURL}
               alt={recipe.title}
-              className="rounded-xl h-40 w-full object-cover mb-4"
+              className="rounded-xl h-44 w-full object-cover mb-4"
             />
-            <h2 className="text-lg font-semibold mb-2 text-orange-800">
+            <h2 className="text-lg ml-1 font-semibold mb-2 text-orange-800">
               {recipe.title}
             </h2>
-            <p className="text-sm text-gray-600 my-1">
+            <p className="text-sm ml-1 text-gray-600 my-1">
               <strong>Cuisine:</strong> {recipe.cuisineType}
             </p>
-            <p className="text-sm text-gray-600 my-1">
-              <strong>Prep Time:</strong> {recipe.prepTime} mins
+            <p className="text-gray-800 flex mt-2 ml-1 font-medium">
+              <AiOutlineLike
+                size={20}
+                className="mr-2 mt-[2px]"
+              ></AiOutlineLike>{" "}
+              {recipe.likeCount}
             </p>
-            <p className="text-sm text-gray-600 my-1">
-              <strong>Categories:</strong> {recipe.categories}
-            </p>
-            <p className="text-sm text-gray-600 mb-2 line-clamp-2 mt-1">
-              <strong>Ingredients:</strong> {recipe.ingredients}
-            </p>
-            <Link to={`/recipeDetails/${recipe._id}`}>
-              <button className="mt-6 px-4 py-2 text-white rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 transition border-1 border-orange-800 shadow-md shadow-orange-300">
-                See Details
-              </button>
-            </Link>
+
+            <div className="relative h-full mt-[80px]">
+              <Link to={`/recipeDetails/${recipe._id}`}>
+                <button className="absolute bottom-4 right-4 px-4 py-2 rounded-md text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 ">
+                  View Details
+                </button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>

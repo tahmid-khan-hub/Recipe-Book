@@ -17,7 +17,7 @@ const TopRecipe = ({ recipeData }) => {
 
   const topRecipes = [...recipeData]
     .sort((a, b) => b.likeCount - a.likeCount)
-    .slice(0, 6);
+    .slice(0, 8);
 
   return (
     <div>
@@ -33,17 +33,17 @@ const TopRecipe = ({ recipeData }) => {
             collection and find inspiration for your next culinary adventure.
           </p>
         </Fade>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
           {topRecipes.map((recipe) => (
             <div
               data-aos="flip-down"
               key={recipe._id}
-              className="bg-white shadow-md hover:shadow-md hover:shadow-green-600 rounded-lg overflow-hidden border-1 border-green-600"
+              className="bg-white shadow-xl  rounded-lg overflow-hidden border-1 border-green-600"
             >
               <img
                 src={recipe.photoURL}
                 alt={recipe.title}
-                className="w-full h-48 object-cover"
+                className="w-full h-[250px] object-cover p-2 rounded-xl"
               />
               <div className="p-4">
                 <h3 className="text-lg text-orange-800 font-bold">
