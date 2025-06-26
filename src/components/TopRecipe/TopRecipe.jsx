@@ -38,7 +38,7 @@ const TopRecipe = ({ recipeData }) => {
             <div
               data-aos="flip-down"
               key={recipe._id}
-              className="bg-white shadow-xl  rounded-lg overflow-hidden border-1 border-green-600"
+              className="bg-white shadow-md shadow-green-400  rounded-lg overflow-hidden border-1 border-green-600"
             >
               <img
                 src={recipe.photoURL}
@@ -50,7 +50,7 @@ const TopRecipe = ({ recipeData }) => {
                   {recipe.title}
                 </h3>
                 <p className="text-gray-600 mt-2">
-                  Cuisine: {recipe.cuisineType}
+                  <span className="font-bold">Cuisine</span>: {recipe.cuisineType}
                 </p>
                 <p className="text-gray-800 flex mt-2 font-medium">
                   <AiOutlineLike size={20} className="mr-2 mt-[2px]"></AiOutlineLike> {recipe.likeCount}
