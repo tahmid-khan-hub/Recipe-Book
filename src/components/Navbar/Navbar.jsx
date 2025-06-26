@@ -5,7 +5,6 @@ import "./Navbar.css";
 import { AuthContext } from "../../context/AuthContext";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { Fade } from "react-awesome-reveal";
 
 const Navbar = () => {
   const { user, logOut } = use(AuthContext);
@@ -43,7 +42,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar border-b-1 border-b-green-400">
+    <div className=" max-w-[1393px] mx-auto navbar border-b-1 border-b-green-400 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className=" lg:hidden mr-1">
@@ -81,7 +80,7 @@ const Navbar = () => {
             </NavLink>
           </ul>
         </div>
-        <Fade delay={1500}><a className="text-xl font-semibold "><span className="text-3xl text-orange-600 font-bold">R</span>ecipeB<span className="text-green-700 font-bold">oo</span>k</a></Fade>
+        <a className="text-xl font-semibold ml-1"><span className="text-3xl text-orange-600 font-bold">R</span>ecipeB<span className="text-green-700 font-bold">oo</span>k</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
