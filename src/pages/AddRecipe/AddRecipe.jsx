@@ -44,7 +44,6 @@ const AddRecipe = () => {
                 Swal.fire({
                     title: "Recipe added successfully",
                     icon: "success",
-                    text: "Welcome!",
                 });
             })
     }

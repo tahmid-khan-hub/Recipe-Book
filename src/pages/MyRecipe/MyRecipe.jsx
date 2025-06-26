@@ -5,6 +5,8 @@ import { Fade } from "react-awesome-reveal";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Swal from "sweetalert2";
+import Lottie from "lottie-react";
+import NoMyRecipe from "../../assets/lotties/NoMyRecipe.json";
 
 const MyRecipe = () => {
   const { user } = use(AuthContext);
@@ -13,7 +15,7 @@ const MyRecipe = () => {
   const Allrecipe = useLoaderData();
 
   useEffect(() => {
-    document.title = "RecipeBook | MyRecipe"
+    document.title = "RecipeBook | MyRecipe";
     AOS.init({
       duration: 1000,
       once: false,
@@ -110,43 +112,59 @@ const MyRecipe = () => {
               <div
                 data-aos="fade-up"
                 key={recipe._id}
-                className="flex flex-col md:flex-row bg-white shadow-md rounded-xl overflow-hidden hover:shadow-md hover:shadow-green-600 border-1 border-green-600"
+                className="grid md:grid-cols-2 gap-8 items-stretch bg-white shadow-md rounded-xl overflow-hidden hover:shadow-green-600 border border-green-600 p-4"
               >
-                <img
-                  src={recipe.photoURL}
-                  alt={recipe.title}
-                  className="w-full md:w-64 h-60 object-cover mr-5 p-1 rounded-xl"
-                />
-                <div className="p-4 flex flex-col justify-between flex-1">
-                  <div>
+                {/* Image Section */}
+                <div className="w-full flex flex-col justify-center items-center">
+                  <img
+                    src={recipe.photoURL}
+                    alt={recipe.title}
+                    className="w-full h-full max-h-[440px] object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Content Section */}
+                <div className="flex flex-col justify-between h-full text-gray-800">
+                  <div className="space-y-4">
                     <Fade>
-                      <h3 className="text-2xl font-bold text-green-800 mb-7">
+                      <h3 className="text-2xl font-bold text-green-800 text-center md:text-left">
                         {recipe.title}
                       </h3>
                     </Fade>
-                    <p className="text-sm text-gray-600">
-                      <strong>Cuisine:</strong> {recipe.cuisineType} |{" "}
-                      <strong>Prep Time:</strong> {recipe.prepTime} min
+
+                    <p>
+                      <strong>Categories:</strong>{" "}
+                      {Array.isArray(recipe.categories)
+                        ? recipe.categories.join(", ")
+                        : recipe.categories}
                     </p>
-                    <div className="mt-2 text-sm text-gray-700">
-                      <p>
-                        <strong>Ingredients:</strong> {recipe.ingredients}
-                      </p>
-                      <p className="my-3">
-                        <strong>Instructions:</strong> {recipe.instructions}
-                      </p>
-                      <p className="mt-1">
-                        <strong>Categories:</strong>{" "}
-                        {Array.isArray(recipe.categories)
-                          ? recipe.categories.join(", ")
-                          : recipe.categories}
-                      </p>
-                      <p className="mt-1">
-                        <strong>❤️ Likes:</strong> {recipe.likeCount}
+                    <p>
+                      <strong>Cuisine:</strong> {recipe.cuisineType}
+                    </p>
+                    <p>
+                      <strong>Prep Time:</strong> {recipe.prepTime} minutes
+                    </p>
+
+                    <div>
+                      <h5 className="font-semibold">Ingredients:</h5>
+                      <p className="bg-gray-100 rounded p-2 text-sm">
+                        {recipe.ingredients}
                       </p>
                     </div>
+
+                    <div>
+                      <h5 className="font-semibold">Instructions:</h5>
+                      <p className="bg-gray-100 rounded p-2 text-sm">
+                        {recipe.instructions}
+                      </p>
+                    </div>
+
+                    <p className="mt-2 font-medium text-green-700">
+                      ❤️ Likes: {recipe.likeCount}
+                    </p>
                   </div>
-                  <div className="flex gap-3 mt-4">
+                  {/* Buttons */}
+                  <div className="flex gap-3 mt-6 justify-center md:justify-start">
                     <button
                       className="px-4 py-1 rounded text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 text-sm"
                       onClick={() => {
@@ -168,9 +186,17 @@ const MyRecipe = () => {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500 text-center mb-60">
-            You haven't added any recipes yet.
-          </p>
+          <div className="p-4 mb-11 text-center flex flex-col items-center justify-center">
+            <div className="w-72 h-72">
+              <Lottie animationData={NoMyRecipe} loop />
+            </div>
+            <h2 className="text-2xl md:text-3xl font-semibold text-gray-700 ">
+              You haven’t added any Recipe yet.
+            </h2>
+            <p className="text-gray-500 mt-2 text-sm md:text-base">
+              You can add your own recipe in Add Recipe page.
+            </p>
+          </div>
         )}
       </div>
 
@@ -180,7 +206,11 @@ const MyRecipe = () => {
             <h2 className="text-center font-semibold text-2xl mb-5 text-orange-800">
               Update Recipe
             </h2>
-            <form className="text-orange-800" onSubmit={handleRecipeUpdated} method="dialog">
+            <form
+              className="text-orange-800"
+              onSubmit={handleRecipeUpdated}
+              method="dialog"
+            >
               <button
                 className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 text-orange-800"
                 onClick={() => setSelectedRecipe(null)}
@@ -283,7 +313,9 @@ const MyRecipe = () => {
                   )}
                 </div>
               </div>
-              <button className="btn mt-9 mb-4 w-full text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 border-orange-800 shadow-md shadow-orange-300">Update Recipe</button>
+              <button className="btn mt-9 mb-4 w-full text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 border-orange-800 shadow-md shadow-orange-300">
+                Update Recipe
+              </button>
             </form>
           </div>
         </dialog>
