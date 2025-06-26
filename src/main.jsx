@@ -20,6 +20,7 @@ import PrivateRoute from './context/PrivateRoute.jsx'
 import Loader from './pages/Loader/Loader.jsx'
 import ErrorPage from './pages/ErrorPage/ErrorPage.jsx'
 import FaQ from './pages/FaQ/FaQ.jsx'
+import About from './pages/About/About.jsx'
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: 'faq',
         element: <FaQ></FaQ>
+      },
+      {
+        path: 'about',
+        element: <About></About>
       }
     ]
   },
