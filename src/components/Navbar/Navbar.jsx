@@ -35,12 +35,12 @@ const Navbar = () => {
       <NavLink className="mr-5" to="allrecipe">
         <li>All Recipes</li>
       </NavLink>
-      <NavLink className="mr-5" to="addrecipe">
-        <li>Add Recipe</li>
+      <NavLink className="mr-5" to="faq">
+        <li>FaQ</li>
       </NavLink>
-      {/* <NavLink to="myrecipe">
-        <li>My Recipes</li>
-      </NavLink> */}
+      <NavLink to="about">
+        <li>About</li>
+      </NavLink>
     </>
   );
 

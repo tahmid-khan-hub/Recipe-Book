@@ -69,7 +69,7 @@ const AllRecipe = () => {
             <img
               src={recipe.photoURL}
               alt={recipe.title}
-              className="rounded-xl h-[210px] w-full object-cover mb-4"
+              className="rounded-xl h-46 w-full object-cover mb-4"
             />
             <h2 className="text-lg ml-1 font-semibold mb-2 text-orange-800">
               {recipe.title}

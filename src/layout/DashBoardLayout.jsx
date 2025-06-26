@@ -52,7 +52,13 @@ const DashBoardLayout = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
+            <NavLink to="dashboard/allrecipe">All Recipe</NavLink>
+          </li>
+          <li>
             <NavLink to="dashboard/myrecipe">My Recipe</NavLink>
+          </li>
+          <li>
+            <NavLink to="dashboard/addrecipe">Add Recipe</NavLink>
           </li>
         </ul>
       </div>

@@ -40,7 +40,7 @@ const AddRecipe = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('new recipe added', data);
-                navigate("/myrecipe")
+                navigate("/dashboard")
                 Swal.fire({
                     title: "Recipe added successfully",
                     icon: "success",
