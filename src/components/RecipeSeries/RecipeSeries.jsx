@@ -41,10 +41,10 @@ const RecipeSeries = () => {
   return (
     <section className="py-10 px-4  my-24">
       <Fade>
-        <h2 className="text-2xl text-center text-orange-800 font-bold mb-4 mt-2">
+        <h2 className="text-3xl text-center text-orange-800 font-bold mb-4 mt-2">
           Recipe Series & Mini Courses
         </h2>
-        <p className="text-center text-orange-800 mb-7">
+        <p className="text-center text-gray-500 mb-7">
           Explore a variety of cooking journeys—from quick mini courses to
           deep-dive recipe series that bring global flavors to your kitchen.
         </p>

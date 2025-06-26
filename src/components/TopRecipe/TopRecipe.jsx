@@ -23,7 +23,7 @@ const TopRecipe = ({ recipeData }) => {
     <div>
       <div className="p-4 mt-24">
         <Fade>
-          <h2 className="text-2xl text-center text-orange-800 font-semibold mb-4">
+          <h2 className="text-3xl text-center text-orange-800 font-semibold mb-4">
           Top Recipes
           </h2>
           <p className="text-center text-gray-500 mb-6">
