@@ -4,6 +4,7 @@ import TopRecipe from '../TopRecipe/TopRecipe';
 import RecipeSeries from '../RecipeSeries/RecipeSeries';
 import IngredientOfWeek from '../IngredientOfWeek/IngredientOfWeek';
 import { useLoaderData } from 'react-router';
+import ChefsPick from '../ChefsPick/ChefsPick';
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             <TopRecipe recipeData={recipeData}></TopRecipe>
             <IngredientOfWeek></IngredientOfWeek>
             <RecipeSeries></RecipeSeries>
+            <ChefsPick></ChefsPick>
         </div>
     );
 };
