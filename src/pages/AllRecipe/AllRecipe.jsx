@@ -7,6 +7,7 @@ import { AiOutlineLike } from "react-icons/ai";
 const AllRecipe = () => {
   const allRecipeData = useLoaderData();
   const [selectedCuisine, setSelectedCuisine] = useState("All");
+  const [sortOption, setSortOption] = useState("default");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -25,6 +26,11 @@ const AllRecipe = () => {
     "Indian",
     "Others",
   ];
+  const sortOptions = [
+    { label: "Default", value: "default" },
+    { label: "Most Liked", value: "likes_desc" },
+    { label: "Least Liked", value: "likes_asc" },
+  ];
 
   const filteredRecipes =
     selectedCuisine === "All"
@@ -33,6 +39,12 @@ const AllRecipe = () => {
           (recipe) =>
             recipe.cuisineType.toLowerCase() === selectedCuisine.toLowerCase()
         );
+
+  const sortedRecipes = [...filteredRecipes].sort((a, b) => {
+    if (sortOption === "likes_desc") return b.likeCount - a.likeCount;
+    if (sortOption === "likes_asc") return a.likeCount - b.likeCount;
+    return 0;
+  });
 
   return (
     <div className="p-6">
@@ -44,12 +56,13 @@ const AllRecipe = () => {
         culinary creations...
       </p>
 
-      {/* Dropdown */}
-      <div className="flex justify-center mb-10">
+      {/* Filters */}
+      <div className="flex justify-center gap-4 mb-10 flex-wrap">
+        {/* Cuisine Filter */}
         <select
           value={selectedCuisine}
           onChange={(e) => setSelectedCuisine(e.target.value)}
-          className="px-4 py-2 border border-green-600 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-400 "
+          className="px-4 py-2 border border-green-600 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-400"
         >
           {cuisineOptions.map((cuisine) => (
             <option key={cuisine} value={cuisine}>
@@ -57,14 +70,28 @@ const AllRecipe = () => {
             </option>
           ))}
         </select>
+
+        {/* Sort Option */}
+        <select
+          value={sortOption}
+          onChange={(e) => setSortOption(e.target.value)}
+          className="px-4 py-2 border border-green-600 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-400"
+        >
+          {sortOptions.map((option) => (
+            <option key={option.value} value={option.value}>
+              {option.label}
+            </option>
+          ))}
+        </select>
       </div>
 
+      {/* Recipe Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {filteredRecipes.map((recipe) => (
+        {sortedRecipes.map((recipe) => (
           <div
             data-aos="flip-right"
             key={recipe._id}
-            className="bg-white rounded-xl overflow-hidden p-2 flex flex-col border-1 border-green-600 shadow-xl "
+            className="bg-white rounded-xl overflow-hidden p-2 flex flex-col border-1 border-green-600 shadow-xl"
           >
             <img
               src={recipe.photoURL}
@@ -78,16 +105,13 @@ const AllRecipe = () => {
               <strong>Cuisine:</strong> {recipe.cuisineType}
             </p>
             <p className="text-gray-800 flex mt-2 ml-1 font-medium">
-              <AiOutlineLike
-                size={20}
-                className="mr-2 mt-[2px]"
-              ></AiOutlineLike>{" "}
+              <AiOutlineLike size={20} className="mr-2 mt-[2px]" />
               {recipe.likeCount}
             </p>
 
             <div className="relative h-full mt-[80px]">
               <Link to={`/recipeDetails/${recipe._id}`}>
-                <button className="absolute bottom-4 right-4 px-4 py-2 rounded-md text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300 ">
+                <button className="absolute bottom-4 right-4 px-4 py-2 rounded-md text-white bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 border-green-800 shadow-md shadow-green-300">
                   View Details
                 </button>
               </Link>
