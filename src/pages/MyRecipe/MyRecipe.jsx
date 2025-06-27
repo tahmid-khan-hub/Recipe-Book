@@ -42,7 +42,7 @@ const MyRecipe = () => {
 
     console.log(newRecipe);
 
-    fetch(`https://recipe-book-server-kohl-five.vercel.app/recipes/${selectedRecipe._id}`, {
+    fetch(`http://localhost:3000/recipes/${selectedRecipe._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -81,7 +81,7 @@ const MyRecipe = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://recipe-book-server-kohl-five.vercel.app/recipes/${id}`, {
+        fetch(`http://localhost:3000/recipes/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -33,13 +33,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        loader: () => fetch('https://recipe-book-server-kohl-five.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <Home></Home>,
         hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: "allrecipe",
-        loader: () => fetch('https://recipe-book-server-kohl-five.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <AllRecipe></AllRecipe>,
         hydrateFallbackElement: <Loader></Loader>
       }, 
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "recipeDetails/:id",
-        loader: () => fetch('https://recipe-book-server-kohl-five.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <RecipeDetails></RecipeDetails>
         </PrivateRoute>,
@@ -85,14 +85,14 @@ const router = createBrowserRouter([
     children:[
       {
         index: true,
-        loader: () => fetch('https://recipe-book-server-kohl-five.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <DashboardHome></DashboardHome>
         </PrivateRoute>
       },
       {
         path: "dashboard/myrecipe",
-        loader: () => fetch('https://recipe-book-server-kohl-five.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <MyRecipe></MyRecipe>
         </PrivateRoute>,
@@ -107,7 +107,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard/allrecipe",
-        loader: () => fetch('https://recipe-book-server-kohl-five.vercel.app/recipes'),
+        loader: () => fetch('http://localhost:3000/recipes'),
         element: <PrivateRoute>
           <AllRecipe></AllRecipe>
           </PrivateRoute>,

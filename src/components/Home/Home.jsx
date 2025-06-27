@@ -15,7 +15,7 @@ const Home = () => {
         document.title = "RecipeBook | Home"
     },[])
     return (
-        <div>
+        <div className='overflow-x-hidden'>
             <Banner></Banner>
             <TopRecipe recipeData={recipeData}></TopRecipe>
             <IngredientOfWeek></IngredientOfWeek>

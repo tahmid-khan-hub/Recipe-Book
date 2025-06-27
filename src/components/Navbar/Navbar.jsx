@@ -65,7 +65,7 @@ const Navbar = () => {
     <div className=" navbar sticky top-0 z-50 bg-green-100 border-b-1 border-b-green-400 ">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className=" lg:hidden mr-1">
+          <div tabIndex={0} role="button" className=" lg:hidden mr-1 ml-1">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5 mt-[6px] -ml-2"
@@ -89,7 +89,7 @@ const Navbar = () => {
             {user ? privateLinks : links}
           </ul>
         </div>
-        <a className="text-xl font-semibold ml-1">
+        <a className="text-xl font-semibold ml-1 mb-1">
           <span className="text-3xl text-orange-600 font-bold">R</span>ecipeB
           <span className="text-green-700 font-bold">oo</span>k
         </a>

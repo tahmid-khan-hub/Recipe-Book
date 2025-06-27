@@ -25,7 +25,7 @@ const Banner = () => {
 
       <div className="relative z-10 bg-opacity-60 p-8 rounded-xl max-w-2xl text-center my-10 md:my-40">
         <Fade>
-          <h1 className="text-2xl md:text-[40px] font-bold mb-4 text-green-700">
+          <h1 className="text-[40px] font-bold mb-4 text-green-700">
             Welcome to Recipe Book App
           </h1>
           <p className="text-base md:text-lg mb-6 text-gray-600">
