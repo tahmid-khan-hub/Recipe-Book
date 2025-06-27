@@ -28,10 +28,13 @@ const DashBoardLayout = () => {
               </svg>
             </label>
           </div>
-          <div className="mx-2 flex-1 mb-1 lg:hidden"><a className="text-xl font-semibold -ml-1">
-            <span className="text-3xl text-orange-600 font-bold">R</span>ecipeB
-            <span className="text-green-700 font-bold">oo</span>k
-          </a></div>
+          <div className="mx-2 flex-1 mb-1 lg:hidden">
+            <a className="text-xl font-semibold -ml-1">
+              <span className="text-3xl text-orange-600 font-bold">R</span>
+              ecipeB
+              <span className="text-green-700 font-bold">oo</span>k
+            </a>
+          </div>
         </div>
         {/* Page content here */}
         <Outlet></Outlet>
