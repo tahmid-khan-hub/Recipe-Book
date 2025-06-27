@@ -26,19 +26,19 @@ const Navbar = () => {
 
   const privateLinks = (
     <>
-      <NavLink className="mr-5" to="/">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="/">
         <li>Home</li>
       </NavLink>
-      <NavLink className="mr-5" to="dashboard">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="dashboard">
         <li>DashBoard</li>
       </NavLink>
-      <NavLink className="mr-5" to="allrecipe">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="allrecipe">
         <li>All Recipes</li>
       </NavLink>
-      <NavLink className="mr-5" to="faq">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="faq">
         <li>FaQ</li>
       </NavLink>
-      <NavLink to="about">
+      <NavLink className=" text-orange-800 font-semibold" to="about">
         <li>About</li>
       </NavLink>
     </>
@@ -46,16 +46,16 @@ const Navbar = () => {
 
   const links = (
     <>
-      <NavLink className="mr-5" to="/">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="/">
         <li>Home</li>
       </NavLink>
-      <NavLink className="mr-5" to="allrecipe">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="allrecipe">
         <li>All Recipes</li>
       </NavLink>
-      <NavLink className="mr-5" to="faq">
+      <NavLink className="mr-5 text-orange-800 font-semibold" to="faq">
         <li>FaQ</li>
       </NavLink>
-      <NavLink to="about">
+      <NavLink className=" text-orange-800 font-semibold" to="about">
         <li>About</li>
       </NavLink>
     </>
@@ -89,7 +89,7 @@ const Navbar = () => {
             {user ? privateLinks : links}
           </ul>
         </div>
-        <a className="text-xl font-semibold ml-1 mb-1">
+        <a className="text-xl text-black font-semibold ml-1 mb-1">
           <span className="text-3xl text-orange-600 font-bold">R</span>ecipeB
           <span className="text-green-700 font-bold">oo</span>k
         </a>
@@ -99,7 +99,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <a onClick={() => setDarkMode(!darkMode)} className="theme-toggle">
-          {darkMode ? <FiSun size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
+          {darkMode ? <FiSun className="text-black" size={24}></FiSun> : <FiMoon size={24}></FiMoon>}
         </a>
         <img
           id="user-avatar"
