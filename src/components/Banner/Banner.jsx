@@ -15,7 +15,7 @@ const Banner = () => {
   return (
     <div
       data-aos="fade-up"
-      className="relative bg-cover bg-center flex items-center justify-center text-white mt-5 max-w-[1380px] mx-auto min-h-[400px]"
+      className="relative bg-cover bg-center flex items-center justify-center text-white mt-5 min-h-[400px]"
       style={{
         backgroundImage: "url('https://i.ibb.co/Rkq1Rh0n/image.png')",
       }}

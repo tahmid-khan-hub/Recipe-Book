@@ -33,7 +33,7 @@ const TopRecipe = ({ recipeData }) => {
             collection and find inspiration for your next culinary adventure.
           </p>
         </Fade>
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {topRecipes.map((recipe) => (
             <div
               data-aos="flip-down"

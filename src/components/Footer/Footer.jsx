@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="max-w-[1393px] mx-auto bg-gradient-to-r from-green-700 to-green-800 text-white py-8 px-4">
+    <footer className=" bg-gradient-to-r from-green-700 to-green-800 text-white py-8 px-4">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Website Name */}
         <div className="text-xl font-semibold">

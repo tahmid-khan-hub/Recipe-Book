@@ -62,7 +62,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className=" navbar sticky top-0 z-50 border-b-1 border-b-green-400 max-w-[1393px] mx-auto ">
+    <div className=" navbar sticky top-0 z-50 bg-green-100 border-b-1 border-b-green-400 ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className=" lg:hidden mr-1">
