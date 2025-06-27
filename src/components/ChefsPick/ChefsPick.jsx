@@ -35,7 +35,7 @@ const ChefsPick = () => {
     });
   }, []);
   return (
-    <section className="my-28 px-4">
+    <section className="my-28">
       <h2 className="text-3xl text-orange-800 font-bold text-center mb-4">
         Chef’s Pick
       </h2>

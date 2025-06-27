@@ -21,7 +21,7 @@ const TopRecipe = ({ recipeData }) => {
 
   return (
     <div>
-      <div className="p-4 mt-24">
+      <div className="mt-24">
         <Fade>
           <h2 className="text-3xl text-center text-orange-800 font-semibold mb-4">
           Top Recipes

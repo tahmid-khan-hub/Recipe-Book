@@ -47,7 +47,7 @@ const AllRecipe = () => {
   });
 
   return (
-    <div className="p-6">
+    <div className="pb-4">
       <h1 className="text-3xl text-orange-800 font-semibold text-center mt-8 mb-3">
         Explore Our Delicious Recipes
       </h1>

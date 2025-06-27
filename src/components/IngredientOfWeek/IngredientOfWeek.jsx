@@ -36,7 +36,7 @@ const IngredientOfWeek = () => {
     ],
   };
   return (
-    <section className="py-10 px-4 mt-24 ">
+    <section className="py-10 mt-24 ">
       <Fade>
         <h2 className="text-3xl font-bold mb-6 text-orange-800">
         Ingredient of the Week: {ingredient.name}

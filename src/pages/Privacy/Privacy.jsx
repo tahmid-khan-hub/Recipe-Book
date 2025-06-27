@@ -4,7 +4,7 @@ const Privacy = () => {
     useEffect(()=>{ window.scrollTo(0,0);},[])
   return (
     
-    <div className=" px-4 py-10 mt-10 text-gray-800">
+    <div className=" px-2 py-10 mt-10 text-gray-800">
       <h1 className="text-3xl font-bold mb-6 text-orange-800">Privacy Policy</h1>
 
       <p className="mb-4 text-gray-600">

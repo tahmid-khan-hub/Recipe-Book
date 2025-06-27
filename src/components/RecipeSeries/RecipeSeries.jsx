@@ -39,7 +39,7 @@ const RecipeSeries = () => {
   ];
 
   return (
-    <section className="py-10 px-4  my-24">
+    <section className="py-10 my-24">
       <Fade>
         <h2 className="text-3xl text-center text-orange-800 font-bold mb-4 mt-2">
           Recipe Series & Mini Courses
